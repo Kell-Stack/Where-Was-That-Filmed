@@ -1,15 +1,28 @@
 # README Boilerplate
 
-A template of README best practices to make your README simple to understand and easy to use. 
-
 ## Table of Contents
 
 - [Installation](#installation)
+- [Implementation](#mplementation)
 - [Usage](#usage)
 
 
 ## Installation
 
+Node -v is 4.6.1 and npm -v is 11.9.0
+
+Please install node package manager. 
+
+```
+npm install 
+```
+
+
+
+## Implementation
+
+I used data from  ```https://data.sfgov.org/Culture-and-Recreation/Film-Locations-in-San-Francisco/yitu-d5am``` which provided me with a listing of filming locations of movies shot in San Francisco starting from 1924. The data was provided by and last updated on October 27, 2017
+San Francisco Film Commission
 
 
 ## Usage
@@ -25,4 +38,5 @@ Where Was That Filmed? allows film and TV buffs the chance to locate where their
 - Installation instructions
 
 - Usage instructions
+
 
