@@ -1,10 +1,10 @@
 import React from 'react';
 
-const API = 'wwmu-gmzc.json'
+const FilmDataFileName = 'wwmu-gmzc.json'
 
-class AllTitles extends React.Component {
+class AllTitlesList extends React.Component {
     loadAll() {
-        fetch(API, {
+        fetch(FilmDataFileName, {
             headers: {
               "content-type": "application/json"
             }
@@ -43,4 +43,4 @@ class AllTitles extends React.Component {
 	}
 }
 
-export default AllTitles;
+export default AllTitlesList;
