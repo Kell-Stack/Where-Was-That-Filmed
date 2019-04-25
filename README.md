@@ -11,10 +11,10 @@
 
 Node -v is 4.6.1 and npm -v is 11.9.0
 
-Please install node package manager. 
+Please install node package manager.
 
 ```
-npm install 
+npm install
 ```
 
 
@@ -33,7 +33,7 @@ Where Was That Filmed?
 
 - Description
 
-Where Was That Filmed? allows film and TV buffs the chance to locate where their favorite scenes were shot in beautiful San Francisco. Browse all the locations to create your own tour and tweet at us @WhereWasThatFilmed with the hashtag #WWTF to share your recreation of iconic cinematic moments. 
+Where Was That Filmed? allows film and TV buffs the chance to locate where their favorite scenes were shot in beautiful San Francisco. Browse all the locations to create your own tour and tweet at us @WhereWasThatFilmed with the hashtag #WWTF to share your recreation of iconic cinematic moments.
 
 - Installation instructions
 
