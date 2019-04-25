@@ -1,30 +1,56 @@
 import React, { Component} from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import CurrentLoc from './Map.js';
 
-
-const mapStyles = {
-    width: '100%',
-    height: '100%'
-}
+// const mapStyles = {
+//     width: '50%',
+//     height: '50%'
+// }
 
 export class MapContainer extends Component {
-    render (){
+    state = {
+        showingInfoWindow: false,  //Hides or the shows the infoWindow
+        activeMarker: {},          //Shows the active marker upon click
+        selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+    };
+
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
+
+    onClose = props => {
+        if (this.state.showingInfoWindow) {
+        this.setState({
+            showingInfoWindow: false,
+            activeMarker: null
+            });
+        }
+    };
+
+    render() {
         return (
-            <div className='Map'>
-                <Map
-                google = {this.props.google}
-                zoom = {12}
-                style = {mapStyles}
-                initialCenter = {{
-                    //center of SF
-                    lat: 37.7749,
-                    lng: -122.4194
-                }}
-                />
-            </div>
-        );
+            <CurrentLoc
+                centerAroundCurrentLocation
+                google={this.props.google}
+            >
+            <Marker onClick={this.onMarkerClick} name={'current location'} />
+            <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+            >
+                <div>
+                    <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+            </InfoWindow>
+            </CurrentLoc>
+            );
+        }
     }
-}
+
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyBjamtNScJzV67YI6RW_kOzzTgsV-EdjAM'
