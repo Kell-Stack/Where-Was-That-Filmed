@@ -1,9 +1,20 @@
-body {
+.app  {
   background-color: #3a3a3a;
 }
 
 .header h3 {
   font-family: 'Sifonn Pro';
+}
+
+.menu {
+
+}
+
+.dropdown{
+  font-family: 'Sifonn Pro';
+  font-size: 14px;
+  /* background:red; */
+  width:15px;
 }
 
 @font-face {
