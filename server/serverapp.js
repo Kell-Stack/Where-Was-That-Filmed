@@ -17,14 +17,14 @@ app.use(express.static('data'))
 app.get('/AllTitles', async (req, res) => {
   const client = await pool.connect();
   var showAllTitles = await client.query('SELECT title FROM media2 ORDER BY title ASC;');
-  console.log(showAll)
+  console.log(showAllTitles)
   client.release()
   res.json(showAllTitles.rows);
 });
 
 app.get('/AllActors/', async (req, res) => {
   const client = await pool.connect();
-  var showAllActors = await client.query('SELECT title FROM media2 ORDER BY title ASC;');
+  var showAllActors = await client.query('SELECT actor_1,actor_2,actor_3 FROM media2 ORDER BY actor_1,actor_2,actor_3 ASC;');
   client.release()
   res.json(showAllActors.rows);
 });
