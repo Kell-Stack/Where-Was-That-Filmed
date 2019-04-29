@@ -9,7 +9,17 @@ const mapStyles = {
     }
   };
 
-export class CurrentLoc extends Component {
+// class LocToLatLng extends Component {
+
+
+//         render() {
+//             return (
+//             )
+//         }
+//     }
+// }
+
+class CurrentLoc extends Component {
     constructor(props) {
         super(props);
 
