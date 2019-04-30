@@ -5,77 +5,40 @@
 //     - b. Call google location API with location string
 //     - c. Receive returned object with lat/long coordinates
 //     - d. Put co-ordinates in new database column (“latlong”), for that row */
-
-const express = require('express');
-const app = express();
-app.use(express.json());
+const axios = require('axios');
 
 const {Pool} = require('pg')
 var pool = new Pool({
-    host: 'localhost',
-    database: 'sffilms',
-    table: 'media',
-    column: 'media.location'
+  host: 'localhost',
+  database: 'sffilms'
 })
 
-const PORT = process.env.PORT || 3008
-app.listen(PORT, console.log(`Server is on port ${PORT}👾`))
+async function generateLatLong() {
+    const client = await pool.connect();
+    const locationQuery = await client.query('SELECT id, locations FROM media;');
 
-client.query('SELECT locations FROM media;')
+    for (let i =0; i < 1; i++){
 
-app.use(express.static('media'))
-
-
-app.get('/locations', async (req, res) => {
-    pool.conecct((err, client, done) => {
-        const query = 'SELECT locations FROM media;';
-        client.query(query, (error, result) => {
-            done();
-            if (error) {
-                res.status(400).json({
-                    error
-                })
+        let result = await axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
+            params: {
+            address: locationQuery.rows[i].locations,
+            key: 'AIzaSyBQAbSfzpZH9Gd8EEDfwKhem_8LtaE_FXU'
             }
-            if (result.rows < '1') {
-                res.status(404).send({
-                    status: 'Failed ❌',
-                    message: 'Info not found ❌',
-                });
-            } else {
-                res.status(200).send({
-                    status: 'Successful ✅',
-                    message: 'Info retrieved ✅',
-                    locations: result.rows
-                });
-            }
-        });
-    });
-})
-
-app.post('/locations', (req, res) => {
-    const data = {
-        location: req.body.locations
+        })
+        console.log(result.data.results[0].geometry)
+        // await client.query('UPDATE media SET lat = ($1), lng $2 WHERE id = $3;', [])
     }
-
-    pool.connect((err, client, done) => {
-        const query = 'INSERT INTO media (latlng) VALUES ($1) RETURNING *;';
-        const values = [data.location];
-
-        client.query(query, values, (error, result) => {
-            done();
-            if (error) {
-                res.status(400).json({
-                    error
-                });
-            }
-            res.status(202).send({
-                ststus: 'Successful',
-                result: result.rows[0]
-            });
-        });
-    });
-});
-
-function generateLatLong(lat, lng) {
-
+    client.release()
 }
+
+generateLatLong()
+
+
+
+// let http = require('http');
+
+// http.createServer(function (req, res) {
+//     res.writeHead(200, {'Content-Type': 'json'});
+//     res.write('Hello World!');
+//     res.end();
+// }).listen(8080);

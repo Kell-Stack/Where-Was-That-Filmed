@@ -30,18 +30,18 @@ app.get('/Titles', async (req, res) => {
   res.json(showAllTitles.rows);
 });
 
-app.get('/Actors/', async (req, res) => {
+app.get('/Actors', async (req, res) => {
   const client = await pool.connect();
   var showAllActors = await client.query('SELECT actor_1,actor_2,actor_3 FROM media ORDER BY actor_1,actor_2,actor_3 ASC;');
   client.release()
   res.json(showAllActors.rows);
 });
 
-app.get('/TourByTitle/', async (req, res) => {
+app.get('/TourByTitle', async (req, res) => {
   const client = await pool.connect();
-  var showAllActors = await client.query('SELECT * FROM media WHERE title = ($1);');
+  var showTourByTitle = await client.query('SELECT * FROM media WHERE title = ($1);');
   client.release()
-  res.json(showAllActors.rows);
+  res.json(showTourByTitle.rows);
 });
 
 if (process.env.NODE_ENV === "production") {
