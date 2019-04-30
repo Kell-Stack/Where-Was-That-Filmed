@@ -13,4 +13,6 @@ class App extends Component {
   }
 }
 
+console.log(process.env.REACT_APP_TMDB_KEY)
+
 export default App;

@@ -9,6 +9,7 @@
     "@rebass/emotion": "^3.1.0",
     "bootstrap": "^4.3.1",
     "google-maps-react": "^2.0.2",
+    "pg-promise": "^8.6.5",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
@@ -18,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,8 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "flow-bin": "^0.98.0"
   }
 }

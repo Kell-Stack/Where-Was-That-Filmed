@@ -1,9 +1,10 @@
 import React from 'react';
+import data from '~/Dev/WWTF/data/sffilmdata.csv';
 
 class AllTitlesList extends React.Component {
 
 	loadAll() {
-		fetch(API, {
+		fetch('data', {
 			headers: {
 			  "content-type": "application/json"
 			}

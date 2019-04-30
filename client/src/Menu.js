@@ -2,16 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const ListItem = (props) => {
-  return(
-    <div>
-      <li>
-      <span className="listTitle"> {props.title} </span>
-      </li>
-    </div>
-  )
-}
-
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +32,7 @@ class Menu extends React.Component {
                 <NavLink href="/AllActors">All Actors</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/AllNeighborhoods">All Neighborhoods</NavLink>
+                <NavLink href="/TourByTitle">Tour By Title</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

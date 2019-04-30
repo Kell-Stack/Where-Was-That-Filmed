@@ -6,7 +6,7 @@ const {Pool} = require('pg')
 var pool = new Pool({
   host: 'localhost',
   database: 'sffilms',
-  table: 'media2'
+  table: 'media'
 })
 
 const PORT = process.env.PORT || 3009
@@ -37,6 +37,17 @@ app.get('/AllActors/', async (req, res) => {
   client.release()
   res.json(showAllActors.rows);
 });
+
+app.get('/TourByTitle/', async (req, res) => {
+  const client = await pool.connect();
+  var showAllActors = await client.query('SELECT * FROM media WHERE title = ($1);');
+  client.release()
+  res.json(showAllActors.rows);
+});
+
+
+
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/build")));
