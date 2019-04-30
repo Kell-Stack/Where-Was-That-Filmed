@@ -5,8 +5,7 @@ app.use(express.json());
 const {Pool} = require('pg')
 var pool = new Pool({
   host: 'localhost',
-  database: 'sffilms',
-  table: 'media'
+  database: 'sffilms'
 })
 
 const PORT = process.env.PORT || 3009
@@ -23,7 +22,7 @@ app.get('/All', async (req, res) => {
   res.json(showAll.rows);
 });
 
-app.get('/AllTitles', async (req, res) => {
+app.get('/Titles', async (req, res) => {
   const client = await pool.connect();
   var showAllTitles = await client.query('SELECT title FROM media ORDER BY title ASC;');
   console.log(showAllTitles)
@@ -31,7 +30,7 @@ app.get('/AllTitles', async (req, res) => {
   res.json(showAllTitles.rows);
 });
 
-app.get('/AllActors/', async (req, res) => {
+app.get('/Actors/', async (req, res) => {
   const client = await pool.connect();
   var showAllActors = await client.query('SELECT actor_1,actor_2,actor_3 FROM media ORDER BY actor_1,actor_2,actor_3 ASC;');
   client.release()
@@ -44,10 +43,6 @@ app.get('/TourByTitle/', async (req, res) => {
   client.release()
   res.json(showAllActors.rows);
 });
-
-
-
-
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/build")));

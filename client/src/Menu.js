@@ -26,10 +26,10 @@ class Menu extends React.Component {
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/AllTitles">All Titles</NavLink>
+                <NavLink href="/Titles">All Titles</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/AllActors">All Actors</NavLink>
+                <NavLink href="/Actors">All Actors</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/TourByTitle">Tour By Title</NavLink>
