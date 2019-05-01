@@ -14,9 +14,9 @@ app.listen(PORT, console.log(`Server is on port ${PORT}👾`))
 
 app.use(express.static('data'))
 
-app.get('/All', async (req, res) => {
+app.get('/', async (req, res) => {
   const client = await pool.connect();
-  var showAll = await client.query('SELECT * FROM media ORDER BY title ASC;');
+  var showAll = await client.query('SELECT * FROM media ORDER BY id ASC;');
   console.log(showAll)
   client.release()
   res.json(showAll.rows);
