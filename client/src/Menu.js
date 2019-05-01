@@ -1,6 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+// import AllTitlesList from AllTitlesList.js;
+// import AllActorssList from AllActorssList.js;
+// import TourByTitle from TourByTitle.js;
+
 
 class Menu extends React.Component {
   constructor(props) {
@@ -26,13 +30,13 @@ class Menu extends React.Component {
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/Titles">All Titles</NavLink>
+                <NavLink href="/AllTitlesList.js">All Titles</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Actors">All Actors</NavLink>
+                <NavLink href="/AllActorsList.js">All Actors</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/TourByTitle">Tour By Title</NavLink>
+                <NavLink href="/TourByTitle.js">Tour By Title</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
