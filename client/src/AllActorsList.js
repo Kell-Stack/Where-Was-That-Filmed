@@ -1,10 +1,11 @@
 import React from 'react';
-import Map from 'Maps';
+import MapContainer from '/MapContainer.js';
 
 class AllActorsList extends React.Component {
+
 	render(){
 		return (
-			<Map />
+			<MapContainer />
 		)
 	}
 }

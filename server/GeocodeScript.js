@@ -12,47 +12,82 @@
 const axios = require('axios');
 const {Pool} = require('pg')
 
+//db connection
 var pool = new Pool({
     host: 'localhost',
     database: 'sffilms'
 })
-
+    //sends query to the db
 async function generateLatLong() {
     const client = await pool.connect();
     const locationQuery = await client.query('SELECT id, locations FROM media;');
+
+        // 💅 pushed into this empty array
+            //OOBLocs will eventually look like this = [
+                    //                                    {
+                    //                                     id: id,
+                    //                                     location: location
+                    //                                    },
+                    //                                    {
+                    //                                     id: id,
+                    //                                     location: location
+                    //                                    },
+                    //                                    {
+                    //                                     id: id,
+                    //                                     location: location
+                    //                                    }
+        //                                             ]
     var outOfBoundsLocations = []
-    var outOfBoundsCount = 0
+
+    // var outOfBoundsCount = 0
 
     //console.log("hiii",locationQuery)
-    // if you want to reset bounds
+
+        // if you want to reset bounds
     let sfNE = '37.835765,-122.351918';
     let sfSW = '37.709090,-122.523080';
 
-    async function getLatLongFromAPI(id, location) {
+        ///send query to google 🗺
+    async function getLatLongFromGoogleGeocodeAPI(id, location) {
+            //attaching and id to each row in the query
         const row = locationQuery.rows[id]
-
+            //for each loop, will request:
+                //each row of locaitons column into the address field,
+                //set the bounds of SF,
+                //and the apps restricted key
+            //in the url...../json?address=.....&bounds=.....&API_KEY
         let result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
             params: {
                 address: location,
                 bounds: `${sfSW}|${sfNE}`,
-                key: 'AIzaSyBjamtNScJzV67YI6RW_kOzzTgsV-EdjAM',
+                key: 'AIzaSyBQAbSfzpZH9Gd8EEDfwKhem_8LtaE_FXU',
             }
         })
-        //console.log(locationQuery.rows[i].locations)
-        //  console.log("hi!",result)
+        // console.log(result)
+        // console.log(locationQuery.rows[i].locations)
+        //console.log("hi!",result)
+        // if (results.length>1){
+        //         results = [results[0]]
+        //         // console.error('multiple results: sanitize data📝')
+        //     }
+
+
         var results = result.data.results
 
-        if (results.length>1){
-            results = [results[0]]
-            // console.error('multiple results: sanitize data📝')
-        }
 
+
+
+            // ⛑test for first loop if the returned lat and lng are in bounds of sf
         for (let data of results) {
+                //in the response object from google, grabs lat and lng values from geometry key
             const lat = (data.geometry.location.lat)
             const lng = (data.geometry.location.lng)
 
             const rowID = row.id
             const values = [lat, lng, rowID]
+
+            console.log(lat,lng)
+
 
                 // test out of bounds
             const northernSF = 37.835765
@@ -63,29 +98,38 @@ async function generateLatLong() {
             let latOOB = parseFloat(lat)
             let lngOOB = parseFloat(lng)
 
+                //for the first loop around if the results returned a lat and lng thats OOB, a console message will appear
             if (latOOB > northernSF || latOOB < southernSF || westernSF < lngOOB || lngOOB < easternSF) {
-                console.error('location out of bounds, data needs to be more specific👀', location)
-                //console.log(results[0])
+                console.error('location out of bounds, data needs to be more specific👀 ', location)
+                // console.log(results[0])
 
+                    //if the result came back as OOB, grab that results id and location string from db and push it into OOBLocations from uptop 💅
                 if (outOfBoundsLocations.indexOf({id: id, location: location}) < 0) {
                     //console.log("ttttt", location)
                     outOfBoundsLocations.push({id: id, location: location})
                     outOfBoundsCount += 1
+
+                        // if after 🗺 this will return lat and long as null and is just going to be skipped over
                 } else {
                     console.log("💄 Still out of bounds!!!", location)
                 }
-                return
+                continue
             }
-
+                //returns first round into lat lng, then gets ready to use 💅 this with 🧠 function
             return values
-        }
+        } //end for in loop
+
     }
 
+        //if ⛑ didn't happen then it's going to take results and enter lat and lng from geocode and put it into the database 📥
     async function getAllLatLongs() {
         // locationQuery.rowCount
-        for (let i = 101; i < 200 ; i++) {
+
+        for (let i = 0; i < 963 ; i++) {
             var locationFromRow = locationQuery.rows[i].locations
-            await getLatLongFromAPI(i, locationFromRow)
+            console.log(locationFromRow,"pew pew")
+            let latLongValues = await getLatLongFromGoogleGeocodeAPI(i, locationFromRow)
+            console.log("jfhbajbfjdbsafjbdb", latLongValues)
             // updateLatLongInDatabase(latLongValues)
         }
     }
@@ -93,16 +137,18 @@ async function generateLatLong() {
     getAllLatLongs().then(result => {
         console.log("💋 Invalid location count is: ", outOfBoundsLocations.length, outOfBoundsLocations)
 
+        //🧠 for each OOB result we're going to add SF to the media.location string and run it through 🗺 again
         outOfBoundsLocations.forEach((locationData, i, a) => {
             locationData.location = locationData.location.concat(', ', 'San Francisco')
-            getLatLongFromAPI(locationData.id, locationData.location).then (result => {
-                //updateLatLongInDatabase(latLongValues)
+            getLatLongFromGoogleGeocodeAPI(locationData.id, locationData.location).then (result => {
+                updateLatLongInDatabase(result)
                 console.log("result!! 👏🏽", result)
             })
         })
     })
 
-    function updateLatLongInDatabase(latLongValues) {
+    //📥
+    function updateLatLongInDatabase(result) {
         // Otherwise updates lat long
         client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', latLongValues).then(res => {
             //console.log(res.rows[0].lat,res.rows[0].lng)
