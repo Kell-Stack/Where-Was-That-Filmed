@@ -16,11 +16,10 @@ var pool = new Pool({
 async function generateLatLong() {
     const client = await pool.connect();
     const locationQuery = await client.query('SELECT id, locations FROM media;');
+    console.log(locationQuery)
     // if you want to reset bounds
-    // let locDate =
     let sfNE = '37.835765,-122.351918';
     let sfSW = '37.709090,-122.523080';
-    console.log(locationQuery)
 
     for (let i = 0; i < 15 ; i++) {
 
@@ -33,13 +32,14 @@ async function generateLatLong() {
         })
         console.log(locationQuery.rows[i].locations)
         // console.log(result)
-        const results = result.data.results
-
-        if (results.length>1 || ){
-            console.log(results)
-        }
+        var results = result.data.results
 
         const row = locationQuery.rows[i]
+
+        if (results.length>1){
+            results = [results[0]]
+            // console.error('multiple results: sanitize data📝')
+        }
 
         for (let data of results) {
             const lat = (data.geometry.location.lat)
@@ -47,6 +47,21 @@ async function generateLatLong() {
 
             const id = row.id
             const values = [lat, lng, id]
+
+                // test out of bounds
+            const northernSF = 37.835765
+            const southernSF = 37.709090
+            const westernSF = -122.351918
+            const easternSF = -122.523080
+
+            let latOOB = parseFloat(lat)
+            let lngOOB = parseFloat(lng)
+
+
+            if (latOOB > northernSF || latOOB < southernSF || westernSF < lngOOB || lngOOB < easternSF) {
+
+                console.error('location out of bounds, data needs to be more specific👀')
+            }
 
             client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', values).then(res => {
                     console.log(res.rows[0].lat,res.rows[0].lng)
