@@ -18,18 +18,26 @@ async function generateLatLong() {
     const locationQuery = await client.query('SELECT id, locations FROM media;');
     // if you want to reset bounds
     // let locDate =
-    let sfNE = '-122.351918,37.835765';
-    let sfSW = '-122.523080,37.709090';
+    let sfNE = '37.835765,-122.351918';
+    let sfSW = '37.709090,-122.523080';
     console.log(locationQuery)
-    for (let i = 0; i < 5; i++) {
 
-        let result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=SanFrancisco&bounds=${sfSW}|${sfNE}&key=AIzaSyBQAbSfzpZH9Gd8EEDfwKhem_8LtaE_FXU`, {
+    for (let i = 0; i < 15 ; i++) {
+
+        let result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
             params: {
-                address: locationQuery.rows[i].locations
-                // key: 'AIzaSyBQAbSfzpZH9Gd8EEDfwKhem_8LtaE_FXU',
+                address: locationQuery.rows[i].locations,
+                bounds: `${sfSW}|${sfNE}`,
+                key: 'AIzaSyBQAbSfzpZH9Gd8EEDfwKhem_8LtaE_FXU',
             }
         })
+        console.log(locationQuery.rows[i].locations)
+        // console.log(result)
         const results = result.data.results
+
+        if (results.length>1 || ){
+            console.log(results)
+        }
 
         const row = locationQuery.rows[i]
 
@@ -41,7 +49,7 @@ async function generateLatLong() {
             const values = [lat, lng, id]
 
             client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', values).then(res => {
-                    console.log(res.rows[0])
+                    console.log(res.rows[0].lat,res.rows[0].lng)
                 })
                 .catch(e => console.error(e))
         }
