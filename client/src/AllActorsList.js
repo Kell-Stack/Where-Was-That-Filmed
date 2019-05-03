@@ -1,11 +1,12 @@
 import React from 'react';
-import MapContainer from '/MapContainer.js';
 
 class AllActorsList extends React.Component {
 
 	render(){
 		return (
-			<MapContainer />
+			<div>
+				<h1>Hello Actors</h1>
+			</div>
 		)
 	}
 }

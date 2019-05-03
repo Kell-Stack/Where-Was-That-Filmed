@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLoc from './Map';
-import { Container, Row, Col } from 'reactstrap';
+
 
 // const mapStyles = {
 //     width: '50%',
@@ -33,27 +33,22 @@ export class MapContainer extends Component {
 
     render() {
         return (
-            <Container>
-                <Col xs="6">.col-6></Col>
-                    <div className="Map-container-column">
-                        <CurrentLoc
-                            centerAroundCurrentLocation
-                            google={this.props.google}
-                        >
-                        <Marker onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
-                        <InfoWindow
-                            marker={this.state.activeMarker}
-                            visible={this.state.showingInfoWindow}
-                            onClose={this.onClose}
-                        >
-                            <div>
-                                <h4>{this.state.selectedPlace.name}</h4>
-                            </div>
-                        </InfoWindow>
-                        </CurrentLoc>
-                    </div>
 
-            </Container>
+            <CurrentLoc
+                centerAroundCurrentLocation
+                google={this.props.google}
+            >
+            <Marker onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
+            <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+            >
+                <div>
+                    <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+            </InfoWindow>
+            </CurrentLoc>
         )
     }
 }

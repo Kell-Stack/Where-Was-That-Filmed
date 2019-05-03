@@ -39,7 +39,7 @@ async function generateLatLong() {
         //                                             ]
     var outOfBoundsLocations = []
 
-    // var outOfBoundsCount = 0
+    var outOfBoundsCount = 0
 
     //console.log("hiii",locationQuery)
 
@@ -100,12 +100,12 @@ async function generateLatLong() {
 
                 //for the first loop around if the results returned a lat and lng thats OOB, a console message will appear
             if (latOOB > northernSF || latOOB < southernSF || westernSF < lngOOB || lngOOB < easternSF) {
-                console.error('location out of bounds, data needs to be more specific👀 ', location)
+                console.error('👀 location out of bounds, data needs to be more specific👀 ', location)
                 // console.log(results[0])
 
                     //if the result came back as OOB, grab that results id and location string from db and push it into OOBLocations from uptop 💅
                 if (outOfBoundsLocations.indexOf({id: id, location: location}) < 0) {
-                    //console.log("ttttt", location)
+                    console.log("loc name: ", location)
                     outOfBoundsLocations.push({id: id, location: location})
                     outOfBoundsCount += 1
 
@@ -127,10 +127,10 @@ async function generateLatLong() {
 
         for (let i = 0; i < 963 ; i++) {
             var locationFromRow = locationQuery.rows[i].locations
-            console.log(locationFromRow,"pew pew")
+            console.log("Location string: ",locationFromRow)
             let latLongValues = await getLatLongFromGoogleGeocodeAPI(i, locationFromRow)
-            console.log("jfhbajbfjdbsafjbdb", latLongValues)
-            // updateLatLongInDatabase(latLongValues)
+            console.log("returned lat & lng 📍", latLongValues)
+            updateLatLongInDatabase(latLongValues)
         }
     }
 
@@ -142,7 +142,7 @@ async function generateLatLong() {
             locationData.location = locationData.location.concat(', ', 'San Francisco')
             getLatLongFromGoogleGeocodeAPI(locationData.id, locationData.location).then (result => {
                 updateLatLongInDatabase(result)
-                console.log("result!! 👏🏽", result)
+                console.log("OOB + \', San Francisco\' result", result)
             })
         })
     })
@@ -150,7 +150,7 @@ async function generateLatLong() {
     //📥
     function updateLatLongInDatabase(result) {
         // Otherwise updates lat long
-        client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', latLongValues).then(res => {
+        client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', result).then(res => {
             //console.log(res.rows[0].lat,res.rows[0].lng)
         })
         .catch(e => console.error("wahh!",e))

@@ -1,8 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-// import AllTitlesList from AllTitlesList.js;
-// import AllActorssList from AllActorssList.js;
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import AllTitlesList from './AllTitlesList';
+
+import { BrowserRouter as Router, Route, Link,NavLink } from 'react-router-dom'
+import AllActorsList from './AllActorsList';
 // import TourByTitle from TourByTitle.js;
 
 
@@ -23,25 +25,30 @@ class Menu extends React.Component {
   }
   render() {
     return (
+      <Router>
       <div>
         <Navbar color="faded" light>
           <NavbarBrand href="/" className="dropdown">Where Was That Filmed?</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
+
             <Nav navbar>
               <NavItem>
-                <NavLink href="/AllTitlesList.js">All Titles</NavLink>
+                <NavLink to='/AllTitles'>All Titles</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/AllActorsList.js">All Actors</NavLink>
+                <NavLink tag={Link} to='/AllActors' component={ AllActorsList}>All Actors</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/TourByTitle.js">Tour By Title</NavLink>
+                <NavLink href="/TourByTitle">Tour By Title</NavLink>
               </NavItem>
             </Nav>
-          </Collapse>
+            <Route path='/AllTitles' component={AllTitlesList}/>
+
+            </Collapse>
         </Navbar>
       </div>
+      </Router>
     );
   }
 }
