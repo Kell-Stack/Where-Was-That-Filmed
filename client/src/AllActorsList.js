@@ -3,9 +3,7 @@ import React from 'react';
 const dbData = '/Actors';
 
 class AllActorsList extends React.Component {
-    constructor() {
-		super();
-	}
+
 
 	loadActors (){
 		fetch (dbData, {

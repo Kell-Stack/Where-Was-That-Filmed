@@ -19,10 +19,10 @@ class App extends Component {
           <Router>
             <Menu />
             <MapContainer />
-              <div>
-                  <Route path='/AllTitles' component={AllTitlesList}/>
-                  <Route path='/AllActors' component={AllActorsList}/>
-              </div>
+                <div>
+                    <Route path='/AllTitles' component={AllTitlesList}/>
+                    <Route path='/AllActors' component={AllActorsList}/>
+                </div>
           </Router>
         </div>
       </div>

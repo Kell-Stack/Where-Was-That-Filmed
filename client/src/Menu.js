@@ -1,13 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import AllTitlesList from './AllTitlesList';
-import { BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom'
-import AllActorsList from './AllActorsList';
+import { NavLink} from 'react-router-dom'
 import SearchBox from './Search';
-import ReactRoute from'./ReactRoutes';
-
-// import TourByTitle from TourByTitle.js;
 
 
 class Menu extends React.Component {
