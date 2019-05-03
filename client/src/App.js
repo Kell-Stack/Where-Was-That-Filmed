@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-import Homepage from './Homepage.js'
+import Menu from './Menu.js'
+import MapContainer from './MapContainer'
+// import ReactRoutes from './ReactRoutes'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AllTitlesList from './AllTitlesList';
+import AllActorsList from './AllActorsList';
+
 
 // import { Button } from 'react-bootstrap';
+
 
 class App extends Component {
   render(){
     return (
       <div className="bg-dark">
-        <Homepage />
+        <div className="App">
+          <Router>
+            <Menu />
+            <MapContainer />
+              <div>
+                  <Route path='/AllTitles' component={AllTitlesList}/>
+                  <Route path='/AllActors' component={AllActorsList}/>
+              </div>
+          </Router>
+        </div>
       </div>
     );
   }

@@ -137,7 +137,7 @@ async function generateLatLong() {
     getAllLatLongs().then(result => {
         console.log("💋 Invalid location count is: ", outOfBoundsLocations.length, outOfBoundsLocations)
 
-        //🧠 for each OOB result we're going to add SF to the media.location string and run it through 🗺 again
+        //🧠 for each OOB result we're going to add SF to the media.location string and run it through 🗺 again - 16 total
         outOfBoundsLocations.forEach((locationData, i, a) => {
             locationData.location = locationData.location.concat(', ', 'San Francisco')
             getLatLongFromGoogleGeocodeAPI(locationData.id, locationData.location).then (result => {

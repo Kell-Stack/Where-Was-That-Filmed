@@ -40,8 +40,9 @@ class AllActorsList extends React.Component {
 
 
 	render(){
+		console.log('frommmmm actors component file')
 		return (
-			<div>
+			<div >
 				<h1>Hello Actors</h1>
 			</div>
 		)

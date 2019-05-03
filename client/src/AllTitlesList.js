@@ -8,7 +8,7 @@ class AllTitlesList extends React.Component {
 	render(){
 		return (
 			<div className='TitleTest'>
-				{<h3>} /yerrrrrr </h3>}
+				{console.log('FROM ALL TITLES COMPONENT /yerrrrrr')}
 			</div>
 		)
 	}
