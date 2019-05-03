@@ -7,7 +7,9 @@ class AllTitlesList extends React.Component {
 
 	render(){
 		return (
-			<h3> /yerrrrrr </h3>
+			<div className='TitleTest'>
+				{<h3>} /yerrrrrr </h3>}
+			</div>
 		)
 	}
 }

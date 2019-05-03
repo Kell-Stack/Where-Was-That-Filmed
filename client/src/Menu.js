@@ -2,9 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import AllTitlesList from './AllTitlesList';
-
-import { BrowserRouter as Router, Route, Link,NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, } from 'react-router-dom'
 import AllActorsList from './AllActorsList';
+import SearchBox from './Search';
 // import TourByTitle from TourByTitle.js;
 
 
@@ -31,24 +31,27 @@ class Menu extends React.Component {
           <NavbarBrand href="/" className="dropdown">Where Was That Filmed?</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
-
+          <SearchBox />
             <Nav navbar>
               <NavItem>
-                <NavLink to='/AllTitles'>All Titles</NavLink>
+                <Link to='/AllTitles'>All Titles</Link>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to='/AllActors' component={ AllActorsList}>All Actors</NavLink>
+                <Link to='/AllActors'>All Actors</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/TourByTitle">Tour By Title</NavLink>
+                <Link to='/OAuth'>Sign In Unfortunatly</Link>
               </NavItem>
             </Nav>
-            <Route path='/AllTitles' component={AllTitlesList}/>
-
             </Collapse>
         </Navbar>
       </div>
+      <Route path='/AllTitles' component={AllTitlesList}/>
+      <Route path='/AllActors' component={AllActorsList}/>
+      <Route path='/OAuth' />
       </Router>
+
+
     );
   }
 }
