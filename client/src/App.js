@@ -12,6 +12,8 @@ import AllActorsList from './AllActorsList';
 
 
 class App extends Component {
+
+
   render(){
     return (
       <div className="bg-dark">
