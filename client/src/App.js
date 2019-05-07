@@ -14,42 +14,35 @@ class App extends Component {
     super(props);
   //   this.handleChange = this.handleChange.bind(this)
     this.state = {
-      locations: {}
+      locations: []
     }
   }
 
   loadLatLng(){
     console.log("About to call:", APIlatlng)
     fetch(APIlatlng)
-      .then(res => res.text()
-      .then(result => console.log(result)))
+      .then(res => res.json())
+      .then(result => this.setState({locations:result}))
       .catch(err => console.log('❌❌❌', err))
   }
 
+  // loadLatLng(){
+  //   console.log("About to call:", APIlatlng)
+  //   fetch(APIlatlng)
+  //     .then(res => res.text()
+  //     .then(() => {
+  //       const locations = this.state.locations.map((latlngval, idx) => {
+  //         return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={'Example📍'} />
+  //     })})
+  //     .catch(err => console.log('❌❌❌', err))
+  // }
+
   componentWillMount() {
     this.loadLatLng()
-}
+  }
 
-  // componentDidMount() {
-  //   fetch(APIlatlng)
-  //   .then(resp => {
-  //     if (!resp.ok) {
-  //       if (resp.status >= 400 && resp.status < 500) {
-  //         return resp.json().then(data => {
-  //           let err = {
-  //             errorMessage: data.message
-  //           };
-  //           throw err;
-  //         });
-  //       } else {
-  //         let err = {
-  //           errorrMessage: "Error FETCHING and parsing data from postgres db😳"
-  //         };
-  //         throw err;
-  //       }
-  //     }
-  //   })
-  // }
+
+
 
   render(){
     return (
@@ -58,7 +51,7 @@ class App extends Component {
           <Router>
             <Menu />
             <div className="App Component Map Container">
-              <MapContainer />
+              <MapContainer locations={this.state.locations}/>
                 <Route path='/AllTitles' component={AllTitlesList}/>
                 <Route path='/AllActors' component={AllActorsList}/>
             </div>

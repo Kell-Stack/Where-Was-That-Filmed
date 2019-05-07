@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import { Map} from 'google-maps-react';
 
 const mapStyles = {
     map: {
       position: 'absolute',
-      width: '50%',
-      height: '50%'
+      width: '100%',
+      height: '1000%'
     }
   };
 
@@ -119,6 +120,17 @@ class CurrentLoc extends Component {
 }
 
 
+//     render() {
+//         const style = Object.assign({}, mapStyles.map);
+//         return (
+//             <Map google={this.props.google} zoom={14}>
+//             {this.renderChildren()}
+//             </Map>
+//         );
+//     }
+// }
+
+
 // SF centered lat/lng from google
 CurrentLoc.defaultProps = {
     zoom: 14,
@@ -130,4 +142,4 @@ CurrentLoc.defaultProps = {
     visible: true
 };
 
-   export default CurrentLoc;
+   export default Map;

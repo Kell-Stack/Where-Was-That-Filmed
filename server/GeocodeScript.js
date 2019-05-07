@@ -110,7 +110,8 @@ async function generateLatLong() {
 
                         // if after 🗺 this will return lat and long as null and is just going to be skipped over
                 } else {
-                    console.log("💄 Still out of bounds!!!", location)
+                    console.log("OUTLIERS💄 Still out of bounds!!!", location)
+
                 }
                 continue
             }
@@ -124,7 +125,7 @@ async function generateLatLong() {
     async function getAllLatLongs() {
         // locationQuery.rowCount
 
-        for (let i = 0; i < 963 ; i++) {
+        for (let i = 0; i < 958 ; i++) {
             var locationFromRow = locationQuery.rows[i].locations
             console.log("Location string: ",locationFromRow)
             let latLongValues = await getLatLongFromGoogleGeocodeAPI(i, locationFromRow)
@@ -136,7 +137,7 @@ async function generateLatLong() {
     getAllLatLongs().then(result => {
         console.log("💋 Invalid location count is: ", outOfBoundsLocations.length, outOfBoundsLocations)
 
-        //🧠 for each OOB result we're going to add SF to the media.location string and run it through 🗺 again - 16 total
+        //🧠 for each OOB result we're going to add SF to the media.location string and run it through 🗺 again
         outOfBoundsLocations.forEach((locationData, i, a) => {
             locationData.location = locationData.location.concat(', ', 'San Francisco')
             getLatLongFromGoogleGeocodeAPI(locationData.id, locationData.location).then (result => {
@@ -152,7 +153,7 @@ async function generateLatLong() {
         client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', result).then(res => {
             //console.log(res.rows[0].lat,res.rows[0].lng)
         })
-        .catch(e => console.error("wahh!",e))
+        .catch(e => console.error("wahh!🗣",e))
     }
 
 }
