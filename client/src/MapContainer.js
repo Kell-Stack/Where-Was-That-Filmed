@@ -39,7 +39,7 @@ export class MapContainer extends Component {
                 <Marker
                 onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
                 {this.props.locations.map((latlngval, idx) => {
-                    return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={'Example📍'} />
+                    return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={this.props.locations[idx].title} />
                 })}
                 <InfoWindow
                     marker={this.state.activeMarker}
