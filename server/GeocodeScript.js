@@ -71,7 +71,6 @@ async function generateLatLong() {
         //         // console.error('multiple results: sanitize data📝')
         //     }
 
-
         var results = result.data.results
 
 

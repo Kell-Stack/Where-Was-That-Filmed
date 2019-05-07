@@ -22,7 +22,7 @@ app.get('/', async (req, res) => {
   res.json(showAll.rows);
 });
 
-app.get('/Titles', async (req, res) => {
+app.get('/AllTitles', async (req, res) => {
   const client = await pool.connect();
   var showAllTitles = await client.query('SELECT title FROM media ORDER BY title ASC;');
   console.log(showAllTitles)
@@ -30,7 +30,7 @@ app.get('/Titles', async (req, res) => {
   res.json(showAllTitles.rows);
 });
 
-app.get('/Actors', async (req, res) => {
+app.get('/AllActors', async (req, res) => {
   const client = await pool.connect();
   var showAllActors = await client.query('SELECT actor_1,actor_2,actor_3 FROM media ORDER BY actor_1,actor_2,actor_3 ASC;');
   client.release()
@@ -42,6 +42,14 @@ app.get('/TourByTitle', async (req, res) => {
   var showTourByTitle = await client.query('SELECT * FROM media WHERE title = ($1);');
   client.release()
   res.json(showTourByTitle.rows);
+});
+
+// for markers
+app.get('/LatLng', async (req, res) => {
+  const client = await pool.connect();
+  var showLatLng = await client.query('SELECT id, title, lat, lng FROM media ORDER BY title ASC;');
+  client.release()
+  res.json(showLatLng.rows);
 });
 
 if (process.env.NODE_ENV === "production") {

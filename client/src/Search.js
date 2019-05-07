@@ -39,7 +39,7 @@ import AllActorsList from './AllActorsList';
 // }
 
 
-export default class SearchBox extends React.Component {
+class SearchBox extends React.Component {
   render() {
     return (
       <Form inline>
@@ -53,3 +53,5 @@ export default class SearchBox extends React.Component {
     );
   }
 }
+
+export default SearchBox;

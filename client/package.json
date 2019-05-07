@@ -9,6 +9,7 @@
     "@rebass/emotion": "^3.1.0",
     "bootstrap": "^4.3.1",
     "express": "^4.16.4",
+    "fetch": "^1.1.0",
     "google-maps-react": "^2.0.2",
     "pg": "^7.10.0",
     "pg-promise": "^8.6.5",

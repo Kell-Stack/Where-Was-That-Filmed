@@ -1,9 +1,37 @@
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg-dark  {
+  background-color: #3a3a3a;
 }
+
+.MapContainerDiv {
+  color: green
+}
+
+.MapContttttt {
+    color: lightgreen
+}
+
+.app{
+  background: red
+}
+
+.header h3 {
+  font-family: 'Sifonn Pro';
+}
+
+.menu {
+
+}
+
+.dropdown{
+  font-family: 'Sifonn Pro';
+  font-size: 14px;
+  /* background:red; */
+  width:15px;
+}
+
+@font-face {
+  font-family: 'Sifonn Pro';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Sifonn Pro'), url('SIFONN_PRO.woff') format('woff');
+  }

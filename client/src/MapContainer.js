@@ -86,25 +86,26 @@ export class MapContainer extends Component {
 
     render() {
         return (
-
-            <CurrentLoc
-                centerAroundCurrentLocation
-                google={this.props.google}
-            >
-            <Marker onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
-            {this.state.locations.map((latlngval, idx) => {
-                return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={'Example📍'} />
-            })}
-            <InfoWindow
-                marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow}
-                onClose={this.onClose}
-            >
-                <div>
-                    <h4>{this.state.selectedPlace.name}</h4>
-                </div>
-            </InfoWindow>
-            </CurrentLoc>
+            <div className='MapContainer.js Div'>
+                <CurrentLoc
+                    centerAroundCurrentLocation
+                    google={this.props.google}
+                >
+                <Marker onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
+                {this.state.locations.map((latlngval, idx) => {
+                    return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={'Example📍'} />
+                })}
+                <InfoWindow
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}
+                    onClose={this.onClose}
+                >
+                    <div>
+                        <h4>{this.state.selectedPlace.name}</h4>
+                    </div>
+                </InfoWindow>
+                </CurrentLoc>
+            </div>
         )
     }
 }

@@ -31,7 +31,7 @@ class Menu extends React.Component {
             <SearchBox />
               <Nav navbar>
                 <NavItem>
-                  <NavLink to='/AllTitles'> All Titles BGAHBGHJBhaha</NavLink>
+                  <NavLink to='/AllTitles'> All Titles</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink to='/AllActors'>All Actors</NavLink>

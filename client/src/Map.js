@@ -9,9 +9,7 @@ const mapStyles = {
     }
   };
 
-// class GetAllLatLngs extends Component {
-//     constructor (props)
-// }
+
 
 class CurrentLoc extends Component {
     constructor(props) {
@@ -110,7 +108,7 @@ class CurrentLoc extends Component {
     render() {
         const style = Object.assign({}, mapStyles.map);
         return (
-            <div>
+            <div className='Map.js Div Container'>
                 <div style={style} ref="map">
                     Loading map...
                 </div>
@@ -119,39 +117,6 @@ class CurrentLoc extends Component {
         );
     }
 }
-
-// class MarkerClusts extends Component {
-//     allMarkers () {
-//         var centerExample = {
-//             lat: 37.7749,
-//             lng: -122.4194
-//           }
-//         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//             var markers = locations.map(function(location, i) {
-//                 return new google.maps.Marker({
-//                 position: location,
-//                 label: labels[i % labels.length]
-//                 });
-//             });
-
-//             var markerCluster = new MarkerClusterer(map, markers,
-//                 {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
-//                 var locations = [
-//                     {lat: 37.7698646, lng: -122.4660947},
-//                     {lat: 37.775144, lng: -122.4039924},
-//                     {lat: 37.7749295, lng: -122.4194155},
-//                     {lat: 37.793997, lng: -122.4023388},
-//                 ]
-//     }
-//     render() {
-//         return (
-//             <div>
-//             {this.renderChildren()}
-//             </div>
-//         )
-//     }
-// }
 
 
 // SF centered lat/lng from google
