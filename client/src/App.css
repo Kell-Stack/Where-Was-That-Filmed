@@ -2,16 +2,12 @@
   background-color: #3a3a3a;
 }
 
-.MapContainerDiv {
-  color: green
-}
-
 .MapContttttt {
     color: lightgreen
 }
 
-.app{
-  background: red
+.Header{
+  background:#f9c04b
 }
 
 .header h3 {
@@ -19,14 +15,25 @@
 }
 
 .MapContainerjs-Div {
-  fluid: PropTypes.bool
+  border: #ef686d;
+
 }
 
 .dropdown{
   font-family: 'Sifonn Pro';
   font-size: 14px;
-  background:red;
+  background:yellow;
   width: 15px;
+}
+
+.App-Component-Titles-Route-Container {
+  background: #595758;
+  font-family: 'Sifonn Pro';
+}
+
+.App-Component-Actors-Route-Container {
+  background: lightcoral;
+  font-family: 'Sifonn Pro';
 }
 
 @font-face {
@@ -35,3 +42,4 @@
   font-weight: normal;
   src: local('Sifonn Pro'), url('SIFONN_PRO.woff') format('woff');
   }
+

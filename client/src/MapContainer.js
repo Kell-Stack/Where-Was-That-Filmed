@@ -11,7 +11,7 @@ export class MapContainer extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        markerCluster: {}
+        // markerCluster: {}
 
     };
 
@@ -35,9 +35,10 @@ export class MapContainer extends Component {
     render() {
         console.log(this.props.locations)
         return (
+
             <Container>
                 <Row>
-                    <Col lg={6}></Col>
+                    <Col xs={6}></Col>
                         <CurrentLoc
                             centerAroundCurrentLocation
                             google={this.props.google}
@@ -45,7 +46,7 @@ export class MapContainer extends Component {
                         <Marker
                             onClick={this.onMarkerClick} name={'YOU ARE HERE📍'}
                         />
-                            {this.props.locations.map((latlngval, idx,) => {
+                            {this.props.locations.map((latlngval, idx) => {
                                 return <Marker
                                         key={idx}
                                         position={latlngval}
@@ -70,5 +71,5 @@ export class MapContainer extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBjamtNScJzV67YI6RW_kOzzTgsV-EdjAM'
+    apiKey: 'AIzaSyBANS3n7z4t5krZlgs8Kq7PuYINovATF2s'
   })(MapContainer);

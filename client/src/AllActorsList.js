@@ -1,50 +1,47 @@
-import React from 'react';
-const dbData = '/Actors/';
+import React, {Component} from 'react';
+import {Container, Row, Col }from 'react-bootstrap'
+import { MapContainer } from './MapContainer';
+const APIactors = 'http://localhost:3009/AllActors'
 
-class AllActorsList extends React.Component {
-    // constructor() {
-	// 	super();
-	// }
+
+
+
+class AllActorsList extends Component {
+    constructor(props) {
+		super(props);
+		this.state = {
+      actors: []
+		}
+	}
 
 	loadActors (){
-		fetch (dbData, {
-			headers: {"content-type": "application/json"}
-		})
-		.then(resp => {
-			if (!resp.ok) {
-			  if (resp.status >= 400 && resp.status < 500) {
-				return resp.json().then(data => {
-				  let err = {
-					errorMessage: data.message
-				  };
-				  throw err;
-				});
-			  } else {
-				let err = {
-				  errorrMessage: "Error FETCHING from database"
-				};
-				throw err;
-			  }
-			}
-			// return resp.json();
-		  })
-		  .then(actList => this.setState({
-			actList
-		  }));
-	  }
-
+		console.log("Ringing:", APIactors)
+		fetch (APIactors)
+			.then(res => res.json())
+			.then(result => this.setState({actors:result}))
+			.catch(err => console.log('🛑🛑🛑 Check All Actors Component',err))
+	}
 	  componentWillMount() {
 		this.loadActors();
 	}
+
+	onActorClick = (props) =>
+		this.setState({
+			selectedActor: props
+		})
 
 
 	render(){
 		console.log('frommmmm actors component file')
 		return (
-			<div >
-				<h1>Hello Actors</h1>
+			<div className="App-Component-Actors-Route-Container">
+						<h1>Hello Actors</h1>
+
+							<AllActorsList
+
+							/>
 			</div>
-		)
+				)
 	}
 }
 

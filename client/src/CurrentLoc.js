@@ -4,9 +4,9 @@ import { Map} from 'google-maps-react';
 
 const mapStyles = {
     map: {
-      position: 'absolute',
+      position: 'fluid',
       width: '100%',
-      height: '1000%'
+      height: '100%'
     }
   };
 

@@ -60,7 +60,7 @@ async function generateLatLong() {
             params: {
                 address: location,
                 bounds: `${sfSW}|${sfNE}`,
-                key: 'AIzaSyBQAbSfzpZH9Gd8EEDfwKhem_8LtaE_FXU',
+                key: 'AIzaSyBANS3n7z4t5krZlgs8Kq7PuYINovATF2s',
             }
         })
         // console.log(result)
