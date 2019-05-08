@@ -18,15 +18,15 @@
   font-family: 'Sifonn Pro';
 }
 
-.menu {
-
+.MapContainerjs-Div {
+  fluid: PropTypes.bool
 }
 
 .dropdown{
   font-family: 'Sifonn Pro';
   font-size: 14px;
-  /* background:red; */
-  width:15px;
+  background:red;
+  width: 15px;
 }
 
 @font-face {

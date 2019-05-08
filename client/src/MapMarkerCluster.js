@@ -1,7 +1,9 @@
-import Map from './Map';
+import React, { Component} from 'react';
+import { GoogleApiWrapper, InfoWindow, Marker, MarkerClusterer, Style, Map } from 'google-maps-react';
+import CurrentLoc from './CurrentLoc';
 
 
-class AllMarkers extends Component {
+class MapMarkerCluster extends Component {
     allMarkers () {
 
         var centerExample = {
@@ -47,4 +49,4 @@ class AllMarkers extends Component {
     }
 }
 
-export default AllMarkers;
+export default MapMarkerCluster;
