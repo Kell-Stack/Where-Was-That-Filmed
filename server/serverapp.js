@@ -32,7 +32,7 @@ app.get('/AllTitles', async (req, res) => {
 
 app.get('/AllActors', async (req, res) => {
   const client = await pool.connect();
-  var showAllActors = await client.query('SELECT actor_1,actor_2,actor_3 FROM media ORDER BY actor_1,actor_2,actor_3 ASC;');
+  var showAllActors = await client.query('SELECT id, title, actor_1,actor_2,actor_3 FROM media ORDER BY actor_1,actor_2,actor_3 ASC;');
   client.release()
   res.json(showAllActors.rows);
 });
@@ -50,6 +50,10 @@ app.get('/LatLng', async (req, res) => {
   var showLatLng = await client.query('SELECT id, title, lat, lng FROM media ORDER BY title ASC;');
   client.release()
   res.json(showLatLng.rows);
+});
+
+app.get('/hello', async (req, res) => {
+  res.json({Hello:"WORLD"});
 });
 
 if (process.env.NODE_ENV === "production") {

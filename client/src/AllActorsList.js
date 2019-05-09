@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Container, Row, Col }from 'react-bootstrap'
-import { MapContainer } from './MapContainer';
-const APIactors = 'http://localhost:3009/AllActors'
+// import {Container, Row, Col }from 'react-bootstrap'
+// import { MapContainer } from './MapContainer';
+const APIactors = '/AllActors'
 
 
 
@@ -37,9 +37,7 @@ class AllActorsList extends Component {
 			<div className="App-Component-Actors-Route-Container">
 						<h1>Hello Actors</h1>
 
-							<AllActorsList
 
-							/>
 			</div>
 				)
 	}

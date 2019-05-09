@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
 // import {Container, Row, Col }from 'react-bootstrap'
-const APIlatlng = 'http://localhost:3009/LatLng'
+const APIlatlng = '/LatLng'
 
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
           <Router>
             <Menu />
 
-              <div className="App Component Map Container">
+              <div className="App-Component-Map-Container">
                 <MapContainer locations={this.state.locations}/>
               </div>
 

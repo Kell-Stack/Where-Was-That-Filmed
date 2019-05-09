@@ -1,10 +1,14 @@
 import React, { Component} from 'react';
-import { GoogleApiWrapper, InfoWindow, Marker, MarkerClusterer } from 'google-maps-react';
+import { GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
 import CurrentLoc from './CurrentLoc';
 import {Container, Row, Col }from 'react-bootstrap'
+// import MarkerClusterer from '../public/markerclusterer/markerclusterer.js'
+// import {default as MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer";
+// import MarkerClusterer from 'node-js-marker-clusterer';
+import { MarkerClusterer } from '@react-google-maps/api';
 
-// {var markerCluster = new MarkerClusterer(markers,
-//     {imagePath: '~/Dev/WWTF/client/src/markerclusterer/m'});}
+
+
 
 export class MapContainer extends Component {
     state = {
@@ -31,9 +35,20 @@ export class MapContainer extends Component {
         }
     };
 
+    // {this.props.locations.map((latlngval, idx) => {
+    //     return <Marker
+    //             key={idx}
+    //             position={latlngval}
+    //             onClick={this.onMarkerClick}
+    //             name={this.props.locations[idx].title}/>
+    // })}
 
     render() {
-        console.log(this.props.locations)
+        // console.log(this.props.locations)
+        // console.log('😬',MarkerClusterer)
+        var markerCluster = new MarkerClusterer(this.props.map, this.props.locations,
+            {imagePath: '/markerclusterer/m'});
+            console.log('😬😬😬',markerCluster)
         return (
 
             <Container>
@@ -42,17 +57,13 @@ export class MapContainer extends Component {
                         <CurrentLoc
                             centerAroundCurrentLocation
                             google={this.props.google}
+                            map={this.props.map}
+
                         >
                         <Marker
                             onClick={this.onMarkerClick} name={'YOU ARE HERE📍'}
                         />
-                            {this.props.locations.map((latlngval, idx) => {
-                                return <Marker
-                                        key={idx}
-                                        position={latlngval}
-                                        onClick={this.onMarkerClick}
-                                        name={this.props.locations[idx].title}/>
-                            })}
+
                         <InfoWindow
                             marker={this.state.activeMarker}
                             visible={this.state.showingInfoWindow}

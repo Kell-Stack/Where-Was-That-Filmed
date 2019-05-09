@@ -4,9 +4,9 @@ import { Map} from 'google-maps-react';
 
 const mapStyles = {
     map: {
-      position: 'fluid',
-      width: '100%',
-      height: '100%'
+      position: 'absolute',
+      width: '50%',
+      height: '50%'
     }
   };
 
@@ -20,7 +20,7 @@ class CurrentLoc extends Component {
         this.state = {
             currentLocation: {
             lat: lat,
-            lng: lng
+            lng: lng,
             }
         };
     }
@@ -108,12 +108,14 @@ class CurrentLoc extends Component {
 
     render() {
         const style = Object.assign({}, mapStyles.map);
+        console.log('👩🏽‍💻',this.map)
         return (
-            <div className='Map.js Div Container'>
+            <div className='Map.js-Div-Container'>
                 <div style={style} ref="map">
                     Loading map...
                 </div>
             {this.renderChildren()}
+
             </div>
         );
     }

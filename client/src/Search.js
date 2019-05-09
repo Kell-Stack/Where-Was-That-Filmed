@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import client from './AllTitlesList';
+// import client from './AllTitlesList';
 
-import AllActorsList from './AllActorsList';
+// import AllActorsList from './AllActorsList';
 
 //SEARCH ACTORS
 
