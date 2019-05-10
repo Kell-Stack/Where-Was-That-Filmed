@@ -30,7 +30,7 @@ class App extends Component {
     // We determine this based on the URL
     let apiCall = APIlatlng;
     const path = window.location.pathname;
-    if (path.startsWith("/AllActors/")) {
+    if (path.startsWith("/AllActors")) {
       const actor = path.split('/')[2];
       apiCall = APItourbyactor + actor;
     }
