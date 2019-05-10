@@ -14,10 +14,12 @@ app.listen(PORT, console.log(`Server is on port ${PORT}👾`))
 
 app.use(express.static('data'))
 
+
+//homepage
 app.get('/', async (req, res) => {
   const client = await pool.connect();
   var showAll = await client.query('SELECT * FROM media ORDER BY id ASC;');
-  console.log(showAll)
+  // console.log(showAll)
   client.release()
   res.json(showAll.rows);
 });
@@ -56,9 +58,9 @@ app.get('/API/AllTitles/:title', async (req, res) => {
   // decodedURI = decodeURIComponent("Dominic%20Cooper")
   // console.log("??",decodedURI)
   const query = 'SELECT id, title, lat, lng FROM media WHERE title = \''+ decodedURI +'\';'
-  console.log("😳",query)
+  // console.log("😳",query)
   const showTourByTitle = await client.query(query);
-  console.log("rowwwwwwwwwwwws",showTourByTitle.rows)
+  // console.log("rowwwwwwwwwwwws",showTourByTitle.rows)
   client.release()
   res.json(showTourByTitle.rows);
 });

@@ -37,16 +37,6 @@ export class MapContainer extends Component {
         }
     };
 
-
-
-    // {this.props.locations.map((latlngval, idx) => {
-    //     return <Marker
-    //             key={idx}
-    //             position={latlngval}
-    //             onClick={this.onMarkerClick}
-    //             name={this.props.locations[idx].title}/>
-    // })}
-
     render() {
         console.log(this.props.locations)
         let iconMarker = new window.google.maps.MarkerImage(
@@ -69,15 +59,16 @@ export class MapContainer extends Component {
 
                         >
                         <Marker
-                        onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} icon={iconMarker} />
-                        {this.props.locations.map((latlngval, idx) => {
-                            return <Marker
-                                key={idx}
-                                position={latlngval}
-                                onClick={this.onMarkerClick}
-                                title={this.props.locations[idx].title}
-                                />
-                        })}
+                        onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} icon={iconMarker}
+                        />
+                            {this.props.locations.map((latlngval, idx) => {
+                                return <Marker
+                                    key={idx}
+                                    position={latlngval}
+                                    onClick={this.onMarkerClick}
+                                    name={this.props.locations[idx].title}
+                                    />
+                            })}
 
                         <InfoWindow
                             marker={this.state.activeMarker}

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 // import data from '~/Dev/WWTF/data/sffilmdata.csv';
 // import MapContainer from './MapContainer.js';
 const APItitle = '/API/AllTitles'
 const APItourbytitle = '/API/AllTitles/'
 
-class AllTitlesList extends React.Component {
+class AllTitlesList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

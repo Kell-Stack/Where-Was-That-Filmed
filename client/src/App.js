@@ -5,10 +5,12 @@ import MapContainer from './MapContainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
+// import Homepage from './Homepage';
 // import {Container, Row, Col }from 'react-bootstrap'
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
-const APItourbytitle = '/API/AllTitles/' // TODO: This doesn't exist yet
+const APItourbytitle = '/API/AllTitles/'
+
 
 
 class App extends Component {
@@ -52,6 +54,11 @@ class App extends Component {
   }
 
   render(){
+
+    // <div className="App-Component-Homepage-Container">
+    //             <Route path='/' component={Homepage}></Route>
+    // </div>
+
     return (
         <div className="Header">
           <Router>
