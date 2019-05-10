@@ -5,12 +5,11 @@ import { Map} from 'google-maps-react';
 const mapStyles = {
     map: {
       position: 'absolute',
+      zoom: 1,
       width: '50%',
-      height: '50%'
+      height: '100%'
     }
   };
-
-
 
 class CurrentLoc extends Component {
     constructor(props) {
@@ -20,7 +19,7 @@ class CurrentLoc extends Component {
         this.state = {
             currentLocation: {
             lat: lat,
-            lng: lng,
+            lng: lng
             }
         };
     }
@@ -108,14 +107,12 @@ class CurrentLoc extends Component {
 
     render() {
         const style = Object.assign({}, mapStyles.map);
-        console.log('👩🏽‍💻',this.map)
         return (
-            <div className='Map.js-Div-Container'>
+            <div className='Map.js Div Container'>
                 <div style={style} ref="map">
                     Loading map...
                 </div>
             {this.renderChildren()}
-
             </div>
         );
     }
@@ -144,4 +141,4 @@ CurrentLoc.defaultProps = {
     visible: true
 };
 
-   export default Map;
+   export default CurrentLoc;

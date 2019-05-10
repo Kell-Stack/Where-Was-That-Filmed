@@ -45,7 +45,6 @@ class App extends Component {
 
               <div className="App-Component-Actors-Route-Container">
                 <Route path='/AllActors' component={AllActorsList}/>
-                <AllActorsList />
               </div>
 
           </Router>

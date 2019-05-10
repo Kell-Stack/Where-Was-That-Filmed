@@ -2,9 +2,21 @@
   background-color: #3a3a3a;
 }
 
-.MapContttttt {
-    color: lightgreen
+/* .App-Component-Map-Container {
+  height: 50%;
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
 }
+
+.App-Component-Map-Container iframe{
+  left:0;
+  top:0;
+  height:15%;
+  width:15%;
+  position:fluid;
+  } */
 
 .Header{
   background:#f9c04b

@@ -63,7 +63,7 @@ async function generateLatLong() {
                 key: 'AIzaSyBANS3n7z4t5krZlgs8Kq7PuYINovATF2s',
             }
         })
-        // console.log(result)
+        console.log("🐓",result)
         // console.log(locationQuery.rows[i].locations)
         //console.log("hi!",result)
         // if (results.length>1){
@@ -150,6 +150,7 @@ async function generateLatLong() {
     //📥
     function updateLatLongInDatabase(result) {
         // Otherwise updates lat long
+        console.log(result)
         client.query('UPDATE media SET lat = $1, lng = $2 WHERE id = $3 RETURNING lat,lng', result).then(res => {
             //console.log(res.rows[0].lat,res.rows[0].lng)
         })

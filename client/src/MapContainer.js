@@ -44,11 +44,8 @@ export class MapContainer extends Component {
     // })}
 
     render() {
-        // console.log(this.props.locations)
+        console.log(this.props.locations)
         // console.log('😬',MarkerClusterer)
-        var markerCluster = new MarkerClusterer(this.props.map, this.props.locations,
-            {imagePath: '/markerclusterer/m'});
-            console.log('😬😬😬',markerCluster)
         return (
 
             <Container>
@@ -61,8 +58,10 @@ export class MapContainer extends Component {
 
                         >
                         <Marker
-                            onClick={this.onMarkerClick} name={'YOU ARE HERE📍'}
-                        />
+                        onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
+                        {this.props.locations.map((latlngval, idx) => {
+                            return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={this.props.locations[idx].title} />
+                        })}
 
                         <InfoWindow
                             marker={this.state.activeMarker}
@@ -82,5 +81,5 @@ export class MapContainer extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBANS3n7z4t5krZlgs8Kq7PuYINovATF2s'
+    apiKey: 'AIzaSyC6iwluhQwZnoy6wq9LejqcbLrwRQ5khgI'
   })(MapContainer);
