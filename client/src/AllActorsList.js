@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-// import {Container, Row, Col }from 'react-bootstrap'
-// import { MapContainer } from './MapContainer';
+import { NavLink } from 'reactstrap';
 const APIactors = '/AllActors'
 const APItourbyactor = '/TourByActor/'
+
+
 
 
 class AllActorsList extends Component {
@@ -62,11 +63,11 @@ class AllActorsList extends Component {
 
 //this function takes the list results from load actors and sends a query back to the server to grab
 //every row that actor is featured in returning the title and id of that row
+/*
 	locationsByActors(actorLocList) {
 		actorLocList.forEach((actor, index) => {
 			//if (index > 0) { return }
 			let newURI = APItourbyactor + actor.trim()
-			// console.log("?", newURI)
 			fetch (newURI)
 			.then(res => res.json())
 			.then(result => {
@@ -76,11 +77,12 @@ class AllActorsList extends Component {
 			.catch(err => console.log('Check Actor\'s name🐲',actor, err))
 		})
 	}
+*/
 
 	idLocationsByActors(idForMarker) {
 		idForMarker.forEach((id) => {
-			let actorLink = this.state.actorsWithTitles.lat;
-			console.log("🍄", actorLink)
+			// let actorLink = this.state.actorsWithTitles;
+			// console.log("🍄", actorLink)
 		})
 	}
 
@@ -117,7 +119,8 @@ class AllActorsList extends Component {
 		let actorLink = this.state.idLocationsByActors
 
 		let lis = this.state.sortedActors.map(actor => {
-			return <li>{actor}</li>
+			return <li>
+				<a href={`/AllActors/${actor}`}> {actor}</a></li>
 		})
 
 		// let idMarker;

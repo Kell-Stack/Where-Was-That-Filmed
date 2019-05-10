@@ -34,7 +34,7 @@ class AllTitlesList extends React.Component {
 
 		return (
 			<div className="App-Component-Titles-Route-Container">
-			<h1>Tour By Actor</h1>
+			<h1>Tour By Title</h1>
 
 				<ol>
 					{lis}

@@ -37,13 +37,25 @@ app.get('/AllActors', async (req, res) => {
   res.json(showAllActors.rows);
 });
 
-app.get('/TourByActor/:actor', async (req, res) => {
+app.get('/AllActors/:actor', async (req, res) => {
   // console.log("qqq")
   const client = await pool.connect();
   var decodedURI = decodeURIComponent(req.params.actor)
   // decodedURI = decodeURIComponent("Dominic%20Cooper")
   // console.log("??",decodedURI)
   var showTourByTitle = await client.query('SELECT id, title, lat, lng FROM media WHERE actor_1 = \''+ decodedURI + '\' OR actor_2 = \'' + decodedURI + '\' OR actor_3 = \'' + decodedURI + '\';');
+  // console.log("rowwws",showTourByTitle.rows)
+  client.release()
+  res.json(showTourByTitle.rows);
+});
+
+app.get('/TourByActor/:actor', async (req, res) => {
+  // console.log("qqq")
+  const client = await pool.connect();
+  var decodedURI = decodeURIComponent(req.params.actor)
+  // decodedURI = decodeURIComponent("Dominic%20Cooper")
+  // console.log("??",decodedURI)
+  const showTourByTitle = await client.query('SELECT id, title, lat, lng FROM media WHERE actor_1 = \''+ decodedURI + '\' OR actor_2 = \'' + decodedURI + '\' OR actor_3 = \'' + decodedURI + '\';');
   // console.log("rowwws",showTourByTitle.rows)
   client.release()
   res.json(showTourByTitle.rows);
