@@ -11,6 +11,7 @@ import { MarkerClusterer } from '@react-google-maps/api';
 
 
 
+
 export class MapContainer extends Component {
     state = {
         showingInfoWindow: false,
@@ -36,6 +37,8 @@ export class MapContainer extends Component {
         }
     };
 
+
+
     // {this.props.locations.map((latlngval, idx) => {
     //     return <Marker
     //             key={idx}
@@ -46,7 +49,14 @@ export class MapContainer extends Component {
 
     render() {
         console.log(this.props.locations)
-        // console.log('😬',MarkerClusterer)
+        let iconMarker = new window.google.maps.MarkerImage(
+            "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+            null,
+            null,
+            null,
+            new window.google.maps.Size(32,32)
+            )
+
         return (
 
             <Container>
@@ -59,9 +69,14 @@ export class MapContainer extends Component {
 
                         >
                         <Marker
-                        onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} />
+                        onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} icon={iconMarker} />
                         {this.props.locations.map((latlngval, idx) => {
-                            return <Marker key={idx} position={latlngval} onClick={this.onMarkerClick} name={this.props.locations[idx].title} />
+                            return <Marker
+                                key={idx}
+                                position={latlngval}
+                                onClick={this.onMarkerClick}
+                                title={this.props.locations[idx].title}
+                                />
                         })}
 
                         <InfoWindow

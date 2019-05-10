@@ -6,9 +6,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
 // import {Container, Row, Col }from 'react-bootstrap'
-const APIlatlng = '/LatLng'
-const APItourbyactor = '/TourByActor/'
-const APItourbytitle = '/TourByTitle/' // TODO: This doesn't exist yet
+const APIlatlng = '/API/LatLng'
+const APItourbyactor = '/API/AllActors/'
+const APItourbytitle = '/API/AllTitles/' // TODO: This doesn't exist yet
 
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
   loadLatLng(){
 
     // Determine which API call to make depending on whether we're getting
-    // 1. all locations for all actors (default)
+    // 1. all locations (default)
     // 2. all locations for a single title
     // 3. all locations for a single actor
     // We determine this based on the URL
@@ -33,8 +33,12 @@ class App extends Component {
       apiCall = APItourbyactor + actor;
     }
     else if (path.startsWith("/AllTitles")) {
-      apiCall = APItourbytitle + 'Big Eyes';
+      const title = path.split('/')[2];
+      console.log("😇",title)
+      apiCall = APItourbytitle + (title || "")
+      console.log("😏",apiCall);
     }
+    // window.apiCall = apiCall
 
     console.log("About to call:", apiCall)
     fetch(apiCall)

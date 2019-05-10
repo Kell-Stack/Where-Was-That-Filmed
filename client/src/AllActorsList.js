@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { NavLink } from 'reactstrap';
-const APIactors = '/AllActors'
-const APItourbyactor = '/TourByActor/'
+const APIactors = '/API/AllActors'
+const APItourbyactor = '/API/AllActors/'
 
 
 
@@ -63,7 +63,7 @@ class AllActorsList extends Component {
 
 //this function takes the list results from load actors and sends a query back to the server to grab
 //every row that actor is featured in returning the title and id of that row
-/*
+
 	locationsByActors(actorLocList) {
 		actorLocList.forEach((actor, index) => {
 			//if (index > 0) { return }
@@ -77,14 +77,14 @@ class AllActorsList extends Component {
 			.catch(err => console.log('Check Actor\'s name🐲',actor, err))
 		})
 	}
-*/
 
-	idLocationsByActors(idForMarker) {
-		idForMarker.forEach((id) => {
-			// let actorLink = this.state.actorsWithTitles;
-			// console.log("🍄", actorLink)
-		})
-	}
+
+	// idLocationsByActors(idForMarker) {
+	// 	idForMarker.forEach((id) => {
+	// 		// let actorLink = this.state.actorsWithTitles;
+	// 		// console.log("🍄", actorLink)
+	// 	})
+	// }
 
 	//NEXT STEPS:
 	//1. create marker by id: write new function to use the returned id to mark on the map where that location was
@@ -116,7 +116,7 @@ class AllActorsList extends Component {
 
 		console.log('frommmmm actors component file', this.state.actors.length)
 
-		let actorLink = this.state.idLocationsByActors
+		// let actorLink = this.state.idLocationsByActors
 
 		let lis = this.state.sortedActors.map(actor => {
 			return <li>

@@ -22,22 +22,22 @@ app.get('/', async (req, res) => {
   res.json(showAll.rows);
 });
 
-app.get('/AllTitles', async (req, res) => {
+app.get('/API/AllTitles', async (req, res) => {
   const client = await pool.connect();
-  var showAllTitles = await client.query('SELECT title FROM media ORDER BY title ASC;');
+  var showAllTitles = await client.query('SELECT id, title FROM media ORDER BY title ASC;');
   // console.log(showAllTitles)
   client.release()
   res.json(showAllTitles.rows);
 });
 
-app.get('/AllActors', async (req, res) => {
+app.get('/API/AllActors', async (req, res) => {
   const client = await pool.connect();
   var showAllActors = await client.query('SELECT id, title, actor_1,actor_2,actor_3 FROM media ORDER BY actor_1,actor_2,actor_3 ASC;');
   client.release()
   res.json(showAllActors.rows);
 });
 
-app.get('/AllActors/:actor', async (req, res) => {
+app.get('/API/AllActors/:actor', async (req, res) => {
   // console.log("qqq")
   const client = await pool.connect();
   var decodedURI = decodeURIComponent(req.params.actor)
@@ -49,20 +49,22 @@ app.get('/AllActors/:actor', async (req, res) => {
   res.json(showTourByTitle.rows);
 });
 
-app.get('/TourByActor/:actor', async (req, res) => {
+app.get('/API/AllTitles/:title', async (req, res) => {
   // console.log("qqq")
   const client = await pool.connect();
-  var decodedURI = decodeURIComponent(req.params.actor)
+  var decodedURI = decodeURIComponent(req.params.title)
   // decodedURI = decodeURIComponent("Dominic%20Cooper")
   // console.log("??",decodedURI)
-  const showTourByTitle = await client.query('SELECT id, title, lat, lng FROM media WHERE actor_1 = \''+ decodedURI + '\' OR actor_2 = \'' + decodedURI + '\' OR actor_3 = \'' + decodedURI + '\';');
-  // console.log("rowwws",showTourByTitle.rows)
+  const query = 'SELECT id, title, lat, lng FROM media WHERE title = \''+ decodedURI +'\';'
+  console.log("😳",query)
+  const showTourByTitle = await client.query(query);
+  console.log("rowwwwwwwwwwwws",showTourByTitle.rows)
   client.release()
   res.json(showTourByTitle.rows);
 });
 
 // for markers
-app.get('/LatLng', async (req, res) => {
+app.get('/API/LatLng', async (req, res) => {
   const client = await pool.connect();
   var showLatLng = await client.query('SELECT id, title, lat, lng FROM media ORDER BY title ASC;');
   client.release()
