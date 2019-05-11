@@ -10,7 +10,7 @@ import AllActorsList from './AllActorsList';
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
 const APItourbytitle = '/API/AllTitles/'
-const APIsearchq = '/search/'
+const APIsearchq = '/API/search/'
 
 
 
@@ -81,6 +81,10 @@ class App extends Component {
 
               <div className="App-Component-Actors-Route-Container">
                 <Route path='/AllActors' component={AllActorsList}/>
+              </div>
+
+              <div className="App-Component-Actors-Route-Container">
+                <Route path='/search' component={AllTitlesList}/>
               </div>
 
           </Router>

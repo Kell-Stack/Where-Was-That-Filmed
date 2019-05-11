@@ -59,7 +59,7 @@ class AllTitlesList extends Component {
 	render(){
 		let lis = this.state.sortedTitles.map(title => {
 			let encodedTitle = encodeURIComponent(title)
-			console.log('🌹',title, encodedTitle)
+			// console.log('🌹',title, encodedTitle)
 			return <li key={encodedTitle} >
 			<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
 			</li>

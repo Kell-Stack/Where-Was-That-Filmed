@@ -79,7 +79,7 @@ app.get('/API/search/:search', async (req, res) => {
   const decodedURI = decodeURIComponent(req.params.search)
   const query = 'SELECT id, title, lat, lng FROM media WHERE actor_1 ILIKE $1 OR actor_2 ILIKE $1 OR actor_3 ILIKE $1 OR title ILIKE $1;';
   console.log("♦️",query)
-  const searchTitlesAndActors = await client.query (query,[decodedURI]);
+  const searchTitlesAndActors = await client.query (query,["%" + decodedURI + "%"]);
   client.release()
   res.json(searchTitlesAndActors.rows);
 });

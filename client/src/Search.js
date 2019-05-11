@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
-
-
 // SEARCH ACTORS
-
 
 //   const searchInput = () => {
 
@@ -28,18 +24,6 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 // }
 
-
-const search = () => {
-  var userInput = document.getElementById("SearchBox").value
-  let encodeInput = encodeURI(userInput)
-  window.location.pathname = "/search/" + encodeInput
-}
-
-
-
-
-
-
 // if searchActors doesn't return a query, then i want to searchTitles
 //
 
@@ -52,12 +36,9 @@ class SearchBox extends React.Component {
       this.state = {
         onInput: []
       }
-      // this.searchAll = searchActors && searchTitles
-      this.search=search
+      this.search=this.search.bind(this)
 
   }
-
-
   // componentDidMount () {
   //    /* event listener */
   //    document.getElementById("SearchBox").addEventListener('input', onInput);
@@ -71,13 +52,30 @@ class SearchBox extends React.Component {
   //   })
   //   setActors()
 // }
+  search(e) {
 
+    var userInput = this.state.query
+    console.log("🆒", userInput)
+    let encodeInput = encodeURI(userInput)
+    console.log("⏫",encodeInput)
+
+    window.location.pathname = "/search/" + encodeInput
+
+  }
   render() {
     return (
       <Form inline>
         <FormGroup>
           <Label for="searchBox" hidden>Search</Label>
-          <Input type="" name="" id="SearchBox" placeholder="" />
+          <Input type="" name="" id="SearchBox" placeholder=""  onChange={event => {this.setState({query:event.target.value})
+          console.log("jsfjdfgevfas flbwlubcwbasjdhbjc",event.target.value)}}
+
+                                                                onKeyPress={event => {
+                                                                  console.log("helololol,",event.key)
+                                                                  if (event.key === "Enter") {
+                                                                    event.preventDefault();
+                                                                    this.search ()
+                                                                  }}}/>
         </FormGroup>
         {' '}
         <Button onClick={this.search}>Search</Button>
