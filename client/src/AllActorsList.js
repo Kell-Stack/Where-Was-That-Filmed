@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { NavLink } from 'reactstrap';
 const APIactors = '/API/AllActors'
-const APItourbyactor = '/API/AllActors/'
+const APItourbyactor = '/AllActors/'
 
 
 

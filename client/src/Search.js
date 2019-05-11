@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import AllActorsList from './AllActorsList';
+
 
 
 // SEARCH ACTORS
@@ -29,17 +29,15 @@ import AllActorsList from './AllActorsList';
 // }
 
 
-const searchActors = () => {
+const search = () => {
   var userInput = document.getElementById("SearchBox").value
   let encodeInput = encodeURI(userInput)
-  window.location.pathname = "/AllActors/" + encodeInput
+  window.location.pathname = "/search/" + encodeInput
 }
 
-const searchTitles = () => {
-  var userInput = document.getElementById("SearchBox").value
-  let encodeInput = encodeURI(userInput)
-  window.location.pathname = "/AllTitles/" + encodeInput
-}
+
+
+
 
 
 // if searchActors doesn't return a query, then i want to searchTitles
@@ -55,8 +53,8 @@ class SearchBox extends React.Component {
         onInput: []
       }
       // this.searchAll = searchActors && searchTitles
-      this.searchActors = searchActors
-      this.searchTitles = searchTitles
+      this.search=search
+
   }
 
 
@@ -82,7 +80,7 @@ class SearchBox extends React.Component {
           <Input type="" name="" id="SearchBox" placeholder="" />
         </FormGroup>
         {' '}
-        <Button onClick={this.searchActors && this.searchTitles}>Search</Button>
+        <Button onClick={this.search}>Search</Button>
       </Form>
     );
   }

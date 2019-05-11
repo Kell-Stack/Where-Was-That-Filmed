@@ -31,10 +31,10 @@ class Menu extends React.Component {
             <SearchBox />
               <Nav navbar>
                 <NavItem>
-                  <NavLink to='/AllTitles'> All Titles</NavLink>
+                  <NavLink to='/AllTitles'>Titles</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink to='/AllActors'>All Actors</NavLink>
+                    <NavLink to='/AllActors'>Actors</NavLink>
                 </NavItem>
               </Nav>
               </Collapse>

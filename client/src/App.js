@@ -10,6 +10,7 @@ import AllActorsList from './AllActorsList';
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
 const APItourbytitle = '/API/AllTitles/'
+const APIsearchq = '/search/'
 
 
 
@@ -40,7 +41,12 @@ class App extends Component {
       console.log("😇",title)
       apiCall = APItourbytitle + (title || "")
       console.log("😏title",apiCall);
+    } else if (path.startsWith("/search")) {
+        const search = path.split ('/')[2];
+        apiCall = APIsearchq + (search)
+        console.log("🔴", apiCall)
     }
+
     // window.apiCall = apiCall
 
     console.log("About to call:", apiCall)

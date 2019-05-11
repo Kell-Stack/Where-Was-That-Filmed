@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Map} from 'google-maps-react';
+// import { Map} from 'google-maps-react';
 
 const mapStyles = {
     map: {

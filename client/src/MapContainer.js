@@ -30,7 +30,7 @@ export class MapContainer extends Component {
     };
 
     render() {
-        console.log(this.props.locations)
+        // console.log("🔔",this.props.locations)
         let iconMarker = new window.google.maps.MarkerImage(
             "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
             null,
@@ -59,6 +59,7 @@ export class MapContainer extends Component {
                                     position={latlngval}
                                     onClick={this.onMarkerClick}
                                     name={this.props.locations[idx].title}
+
                                     />
                             })}
 
