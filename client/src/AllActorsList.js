@@ -127,7 +127,7 @@ class AllActorsList extends Component {
 
 		return (
 			<div className="App-Component-Actors-Route-Container">
-					<h1>Tour By Actor</h1>
+					<h1>Location By Actor</h1>
 
 					<ol>
 						{lis}

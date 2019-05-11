@@ -33,12 +33,13 @@ class App extends Component {
     if (path.startsWith("/AllActors")) {
       const actor = path.split('/')[2];
       apiCall = APItourbyactor + actor;
+      console.log("😏actor",apiCall);
     }
-    else if (path.startsWith("/AllTitles")) {
+    else if (path.startsWith("/AllTitles/")) {
       const title = path.split('/')[2];
       console.log("😇",title)
       apiCall = APItourbytitle + (title || "")
-      console.log("😏",apiCall);
+      console.log("😏title",apiCall);
     }
     // window.apiCall = apiCall
 

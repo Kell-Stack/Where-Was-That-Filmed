@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import data from '~/Dev/WWTF/data/sffilmdata.csv';
 // import MapContainer from './MapContainer.js';
 const APItitle = '/API/AllTitles/'
-const APItourbytitle = '/API/AllTitles'
+const APItourbytitle = '/API/AllTitles/'
 
 class AllTitlesList extends Component {
 	constructor(props) {
@@ -19,9 +19,9 @@ class AllTitlesList extends Component {
 			.then(res => res.json())
 			.then(result => {
 				this.setState({titles:result})
-				console.log("🎄", result)
+				// console.log("🎄", result)
 				this.setState({sortedTitles: this.generateUniqueTitles(result)})
-				console.log("✨", this.locationsByTitle(this.state.sortedTitles))
+				// console.log("✨", this.generateUniqueTitles(result))
 			})
 			.catch(err => console.log('❗️ Check All Titles Component',err))
 	}
@@ -54,16 +54,20 @@ class AllTitlesList extends Component {
 		})
 	}
 
+
+
 	render(){
 		let lis = this.state.sortedTitles.map(title => {
-			return <li key={title} >
-			<a href={`/AllTitles/${title}`}> {title}</a>
+			let encodedTitle = encodeURIComponent(title)
+			console.log('🌹',title, encodedTitle)
+			return <li key={encodedTitle} >
+			<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
 			</li>
 		})
 
 		return (
 			<div className="App-Component-Titles-Route-Container">
-			<h1>Tour By Title</h1>
+			<h1>Location By Title</h1>
 
 				<ol>
 					{lis}

@@ -45,7 +45,8 @@ app.get('/API/AllActors/:actor', async (req, res) => {
   var decodedURI = decodeURIComponent(req.params.actor)
   // decodedURI = decodeURIComponent("Dominic%20Cooper")
   // console.log("??",decodedURI)
-  var showTourByTitle = await client.query('SELECT id, title, lat, lng FROM media WHERE actor_1 = \''+ decodedURI + '\' OR actor_2 = \'' + decodedURI + '\' OR actor_3 = \'' + decodedURI + '\';');
+  const query = 'SELECT id, title, lat, lng FROM media WHERE LOWER (actor_1) = LOWER ($1) OR LOWER actor_2 = LOWER ($2) OR LOWER actor_3 = LOWER ($3);'
+  var showTourByTitle = await client.query(query, [decodedURI]);
   // console.log("rowwws",showTourByTitle.rows)
   client.release()
   res.json(showTourByTitle.rows);
@@ -57,9 +58,9 @@ app.get('/API/AllTitles/:title', async (req, res) => {
   var decodedURI = decodeURIComponent(req.params.title)
   // decodedURI = decodeURIComponent("Dominic%20Cooper")
   // console.log("??",decodedURI)
-  const query = 'SELECT id, title, lat, lng FROM media WHERE title = \''+ decodedURI +'\';'
+  const query = 'SELECT id, title, lat, lng FROM media WHERE LOWER (title) = LOWER ($1)';
   // console.log("😳",query)
-  const showTourByTitle = await client.query(query);
+  const showTourByTitle = await client.query(query, [decodedURI]);
   // console.log("rowwwwwwwwwwwws",showTourByTitle.rows)
   client.release()
   res.json(showTourByTitle.rows);
@@ -67,6 +68,13 @@ app.get('/API/AllTitles/:title', async (req, res) => {
 
 // for markers
 app.get('/API/LatLng', async (req, res) => {
+  const client = await pool.connect();
+  var showLatLng = await client.query('SELECT id, title, lat, lng FROM media ORDER BY title ASC;');
+  client.release()
+  res.json(showLatLng.rows);
+});
+
+app.get('/API/search', async (req, res) => {
   const client = await pool.connect();
   var showLatLng = await client.query('SELECT id, title, lat, lng FROM media ORDER BY title ASC;');
   client.release()

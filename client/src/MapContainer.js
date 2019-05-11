@@ -2,14 +2,6 @@ import React, { Component} from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
 import CurrentLoc from './CurrentLoc';
 import {Container, Row, Col }from 'react-bootstrap'
-// import MarkerClusterer from '../public/markerclusterer/markerclusterer.js'
-// import {default as MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer";
-// import MarkerClusterer from 'node-js-marker-clusterer';
-import { MarkerClusterer } from '@react-google-maps/api';
-
-
-
-
 
 
 export class MapContainer extends Component {

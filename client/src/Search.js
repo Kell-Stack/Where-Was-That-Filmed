@@ -28,12 +28,25 @@ import AllActorsList from './AllActorsList';
 
 // }
 
+
 const searchActors = () => {
-  let userInput = document.getElementById("SearchBox").value
+  var userInput = document.getElementById("SearchBox").value
   let encodeInput = encodeURI(userInput)
   window.location.pathname = "/AllActors/" + encodeInput
 }
 
+const searchTitles = () => {
+  var userInput = document.getElementById("SearchBox").value
+  let encodeInput = encodeURI(userInput)
+  window.location.pathname = "/AllTitles/" + encodeInput
+}
+
+
+// if searchActors doesn't return a query, then i want to searchTitles
+//
+
+// const inputQuery = () => {
+// }
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -41,7 +54,9 @@ class SearchBox extends React.Component {
       this.state = {
         onInput: []
       }
+      // this.searchAll = searchActors && searchTitles
       this.searchActors = searchActors
+      this.searchTitles = searchTitles
   }
 
 
@@ -67,7 +82,7 @@ class SearchBox extends React.Component {
           <Input type="" name="" id="SearchBox" placeholder="" />
         </FormGroup>
         {' '}
-        <Button onClick={this.searchActors}>Submit</Button>
+        <Button onClick={this.searchActors && this.searchTitles}>Search</Button>
       </Form>
     );
   }
