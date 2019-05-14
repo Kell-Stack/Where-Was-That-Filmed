@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "Str2LatLngScript.js",
+  "main": "GeocodeScript.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "geocode": "node Str2LatLngScript.js"
+    "geocode": "node GeocodeScript.js"
   },
   "author": "",
   "license": "ISC",

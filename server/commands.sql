@@ -20,3 +20,13 @@ ALTER TABLE media ADD COLUMN lat FLOAT;
 ALTER TABLE media ADD COLUMN lng FLOAT;
 
 ALTER TABLE media ADD COlUMN id SERIAL PRIMARY KEY;
+
+_______________________________________________________________________________________________________________
+
+CREATE TABLE users(
+id SERIAL PRIMARY KEY,
+first_name VARCHAR(15),
+last_name VARCHAR(15),
+email VARCHAR(50),
+auth0_id VARCHAR(150)
+);

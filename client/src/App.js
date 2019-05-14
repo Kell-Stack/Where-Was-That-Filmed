@@ -5,7 +5,10 @@ import MapContainer from './MapContainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
-// import Homepage from './Homepage';
+import Main from './components/main';
+import Secret from './components/secret';
+import NotFound from './components/notfound';
+import Callback from './components/callback';
 // import {Container, Row, Col }from 'react-bootstrap'
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
@@ -62,6 +65,20 @@ class App extends Component {
 
   render(){
 
+    let mainComponent = ""
+    switch(this.props.location){
+      case "":
+        mainComponent = <Main {...this.props}/>
+        break;
+      case "callback":
+        mainComponent = <Callback />
+        break;
+      case "secret":
+        mainComponent = this.props.auth.isAuthenticated() ? <Secret {...this.props}/> : <NotFound />
+        break;
+      default:
+        mainComponent = <NotFound />
+    }
     // <div className="App-Component-Homepage-Container">
     //             <Route path='/' component={Homepage}></Route>
     // </div>
@@ -86,6 +103,7 @@ class App extends Component {
               <div className="App-Component-Actors-Route-Container">
                 <Route path='/search' component={AllTitlesList}/>
               </div>
+
 
           </Router>
         </div>

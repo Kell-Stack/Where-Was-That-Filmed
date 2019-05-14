@@ -38,6 +38,10 @@
   width: 15px;
 }
 
+.hp {
+  background: lightcoral;
+}
+
 .App-Component-Titles-Route-Container {
   background: #595758;
   font-family: 'Sifonn Pro';

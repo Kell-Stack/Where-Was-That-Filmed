@@ -5,6 +5,7 @@ import { NavLink} from 'react-router-dom'
 import SearchBox from './Search';
 
 
+
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +37,7 @@ class Menu extends React.Component {
                 <NavItem>
                     <NavLink to='/AllActors'>Actors</NavLink>
                 </NavItem>
+
               </Nav>
               </Collapse>
           </Navbar>
