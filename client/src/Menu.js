@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import { NavLink} from 'react-router-dom'
 import SearchBox from './Search';
+import firebase from "firebase"
+// import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 
 class Menu extends React.Component {
@@ -24,10 +26,14 @@ class Menu extends React.Component {
     return (
 
         <div>
-          <Navbar color="faded" light>
+          <Navbar className="navbaby" color="faded" light>
             <NavbarBrand href="/" className="dropdown">Where Was That Filmed?</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse isOpen={!this.state.collapsed} navbar>
+            <img className="profpic"
+                  alt="avatar"
+                  src={firebase.auth().currentUser.photoURL}/>
+                <h6 className="welcometext">Welcome {firebase.auth().currentUser.displayName}</h6>
             <SearchBox />
               <Nav navbar>
                 <NavItem>
@@ -35,6 +41,9 @@ class Menu extends React.Component {
                 </NavItem>
                 <NavItem>
                     <NavLink to='/AllActors'>Actors</NavLink>
+                </NavItem>
+                <NavItem>
+                  <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
                 </NavItem>
               </Nav>
               </Collapse>

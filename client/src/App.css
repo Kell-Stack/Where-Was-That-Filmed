@@ -2,24 +2,22 @@
   background-color: #3a3a3a;
 }
 
-/* .App-Component-Map-Container {
+ /* .App-Component-Map-Container {
   height: 50%;
   overflow:hidden;
   padding-bottom:56.25%;
   position:relative;
   height:0;
-}
+} */
 
-.App-Component-Map-Container iframe{
-  left:0;
-  top:0;
-  height:15%;
-  width:15%;
-  position:fluid;
-  } */
+.App {
+  background: blue;
+  font-family: 'Sifonn Pro';
+  }
 
 .Header{
-  background:#f9c04b
+  background:#f9c04b;
+  font-family: 'Sifonn Pro';
 }
 
 .header h3 {
@@ -28,14 +26,28 @@
 
 .MapContainerjs-Div {
   border: #ef686d;
-
+  font-family: 'Sifonn Pro';
 }
+
+.profpic {
+  border-radius: 50%;
+  width: 50px;
+  height: auto;
+  font-family: 'Sifonn Pro';
+}
+
+.welcometext{
+  font-family: 'Sifonn Pro';
+  font-size: 10pt
+}
+
 
 .dropdown{
   font-family: 'Sifonn Pro';
   font-size: 14px;
   background:yellow;
   width: 15px;
+  position: right;
 }
 
 .App-Component-Titles-Route-Container {
@@ -47,6 +59,8 @@
   background: lightcoral;
   font-family: 'Sifonn Pro';
 }
+
+
 
 @font-face {
   font-family: 'Sifonn Pro';

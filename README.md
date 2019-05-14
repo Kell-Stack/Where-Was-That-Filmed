@@ -79,5 +79,8 @@ Thank you to the following authors' of the posts and videos that helped me creat
 * React Apps with the Google Maps API and google-maps-react - @ngige_rachael
     * https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
 
+* React Firebase Authentication with Google Facebook Twitter Github Email
+    *https://www.youtube.com/watch?v=zq0TuNqV0Ew
+
 * TMDB
     * https://www.themoviedb.org/
