@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import Homepage from './Homepage';
+import Video from './Video'
 
 firebase.initializeApp({
     apiKey: "AIzaSyCzPE45arOuwNVUB0v0ehAviu-4KpE7Wv4",
@@ -9,7 +10,10 @@ firebase.initializeApp({
   })
 
 class App extends Component {
-    state = { isSignedIn: false }
+    state = {
+        isSignedIn: false,
+    }
+
     uiConfig = {
       signInFlow: "popup",
       signInOptions: [
@@ -31,10 +35,10 @@ class App extends Component {
     render() {
         return (
           <div className="App">
+            <Video />
             {this.state.isSignedIn ? (
               <span>
                 <Homepage/>
-
               </span>
             ) : (
               <StyledFirebaseAuth
@@ -44,7 +48,8 @@ class App extends Component {
             )}
           </div>
         )
-      }
     }
+}
+
 
 export default App;
