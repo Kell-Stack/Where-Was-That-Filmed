@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // import Homepage from './Homepage';
 import VideoCover from 'react-video-cover';
+import video from './vidss.mp4';
 
 // class Video extends Component {
 //         constructor (props) {
@@ -46,14 +47,18 @@ class Video extends Component {
             videoURL: 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4'
         }
     }
+
+
+
     render() {
         return (
           <div className="video-container">
             <VideoCover
               className="hero-video"
               videoOptions={{
-                src: "https://download.shutterstock.com/gatekeeper/W3siZSI6MTU1NzkwMjkyMywiayI6InZpZGVvLzEwMTQ5NDQyNzgvcHJldmlldy5tcDQiLCJtIjoxLCJkIjoic2h1dHRlcnN0b2NrLW1lZGlhIn0sIlVIU2RRa0hEZGNFVmEybnE0a2ExNVlRNFQxOCJd/1014944278-preview.mp4",
+                // src: "https://download.shutterstock.com/gatekeeper/W3siZSI6MTU1NzkwMjkyMywiayI6InZpZGVvLzEwMTQ5NDQyNzgvcHJldmlldy5tcDQiLCJtIjoxLCJkIjoic2h1dHRlcnN0b2NrLW1lZGlhIn0sIlVIU2RRa0hEZGNFVmEybnE0a2ExNVlRNFQxOCJd/1014944278-preview.mp4",
                 // https://download.shutterstock.com/gatekeeper/W3siZSI6MTU1NzkwMjkyMywiayI6InZpZGVvLzEwMTQ5NDQyNzgvcHJldmlldy5tcDQiLCJtIjoxLCJkIjoic2h1dHRlcnN0b2NrLW1lZGlhIn0sIlVIU2RRa0hEZGNFVmEybnE0a2ExNVlRNFQxOCJd/1014944278-preview.mp4",
+                src: video,
                 autoPlay: true,
                 loop: true,
                 muted: true,
