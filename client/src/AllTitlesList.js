@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
-// import data from '~/Dev/WWTF/data/sffilmdata.csv';
-// import MapContainer from './MapContainer.js';
+import JwPagination from 'jw-react-pagination';
 const APItitle = '/API/AllTitles/'
 const APItourbytitle = '/API/AllTitles/'
+
 
 class AllTitlesList extends Component {
 	constructor(props) {
 		super(props);
+
+		this.onChangePage = this.onChangePage.bind(this);
+
+
 		this.state = {
 			titles: [],
-			sortedTitles: []
+			sortedTitles: [],
+			pageOfItems: []
 		}
 	  }
 
@@ -54,28 +59,52 @@ class AllTitlesList extends Component {
 		})
 	}
 
+	onChangePage(pageOfItems){
+		this.setState({pageOfItems})
+	}
 
 
 	render(){
-		let lis = this.state.sortedTitles.map(title => {
-			let encodedTitle = encodeURIComponent(title)
-			// console.log('🌹',title, encodedTitle)
-			return <li key={encodedTitle} >
-			<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
-			</li>
-		})
-
+		// let lis = this.state.sortedTitles.map(title => {
+		// 	let encodedTitle = encodeURIComponent(title)
+		// 	// console.log('🌹',title, encodedTitle)
+		// 	return <li key={encodedTitle} >
+		// 	<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
+		// 	</li>
+		// })
+console.log(this.state.sortedTitles)
 		return (
 			<div className="App-Component-Titles-Route-Container">
 			<h1>Location By Title</h1>
 
-				<ol>
-					{lis}
-				</ol>
+				{this.state.pageOfItems.map((item,key) =>
+					<div key={key}> <a href={`/AllTitles/${encodeURIComponent(item)}`}>{item} </a></div>
+				)}
+				<JwPagination items={this.state.sortedTitles} onChangePage={this.onChangePage} />
 			</div>
 		)
 	}
 }
+
+// 		let lis = this.state.sortedTitles.map(title => {
+// 			let encodedTitle = encodeURIComponent(title)
+// 			// console.log('🌹',title, encodedTitle)
+// 			return <li key={encodedTitle} >
+// 			<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
+// 			</li>
+// 		})
+
+// 		return (
+// 			<div className="App-Component-Titles-Route-Container">
+// 			<h1>Location By Title</h1>
+
+// 				<ol>
+// 					{lis}
+// 				</ol>
+// 			</div>
+// 		)
+// 	}
+// }
 
 
 export default AllTitlesList;
