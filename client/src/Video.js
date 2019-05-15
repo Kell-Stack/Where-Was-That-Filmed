@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import Homepage from './Homepage';
 import VideoCover from 'react-video-cover';
-import video from './vidss.mp4';
+import video from './motionsf.mp4';
 
 // class Video extends Component {
 //         constructor (props) {
