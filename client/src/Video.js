@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-// import firebase from "firebase"
-// import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 // import Homepage from './Homepage';
 import VideoCover from 'react-video-cover';
 
@@ -41,13 +39,21 @@ import VideoCover from 'react-video-cover';
 
 
 class Video extends Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            videoURL: 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4'
+        }
+    }
     render() {
         return (
           <div className="video-container">
             <VideoCover
               className="hero-video"
               videoOptions={{
-                src: "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4",
+                src: "https://download.shutterstock.com/gatekeeper/W3siZSI6MTU1NzkwMjkyMywiayI6InZpZGVvLzEwMTQ5NDQyNzgvcHJldmlldy5tcDQiLCJtIjoxLCJkIjoic2h1dHRlcnN0b2NrLW1lZGlhIn0sIlVIU2RRa0hEZGNFVmEybnE0a2ExNVlRNFQxOCJd/1014944278-preview.mp4",
+                // https://download.shutterstock.com/gatekeeper/W3siZSI6MTU1NzkwMjkyMywiayI6InZpZGVvLzEwMTQ5NDQyNzgvcHJldmlldy5tcDQiLCJtIjoxLCJkIjoic2h1dHRlcnN0b2NrLW1lZGlhIn0sIlVIU2RRa0hEZGNFVmEybnE0a2ExNVlRNFQxOCJd/1014944278-preview.mp4",
                 autoPlay: true,
                 loop: true,
                 muted: true,
