@@ -73,7 +73,7 @@ div#firebaseui_container {
 }
 
 .App-Component-Map-Container {
-  max-height: 500px;
+  min-height: 500px;
 }
 
 .App-Component-Titles-Route-Container  {
@@ -84,6 +84,11 @@ div#firebaseui_container {
 .App-Component-Actors-Route-Container {
   background: lightcoral;
   font-family: 'Sifonn Pro';
+}
+
+.col-6 {
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .video-container {

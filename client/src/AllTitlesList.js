@@ -75,9 +75,9 @@ class AllTitlesList extends Component {
 		// })
 //console.log(this.state.sortedTitles)
 console.log("????????",this.props.match.isExact)
-let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
+// let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
 		return (
-		<div className={"App-Component-Titles-Route-Container " + showColumn}>
+		<div className="App-Component-Titles-Route-Container">
 			<div className="Component-Titles">
 				<h1>Location By Title</h1>
 
@@ -93,4 +93,4 @@ let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
 
 
 
-export default withRouter(AllTitlesList);
+export default AllTitlesList;

@@ -123,9 +123,9 @@ class AllActorsList extends Component {
     //    <a href={`/AllActors/${actor}`}> {actor}</a></li>
     // })
     console.log("????????",this.props.match.isExact)
-    let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
+//     let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
     return (
-      <div className={"App-Component-Actors-Route-Container " + showColumn}>
+      <div className="App-Component-Actors-Route-Container">
         <div className="Component-Actors">
             <h2>Location By Actor</h2>
 
@@ -155,4 +155,4 @@ class AllActorsList extends Component {
 //  }
 // }
 
-export default withRouter(AllActorsList);
+export default AllActorsList;
