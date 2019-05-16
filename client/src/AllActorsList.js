@@ -1,144 +1,158 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
+import JwPagination from 'jw-react-pagination';
 const APIactors = '/API/AllActors'
 const APItourbyactor = '/AllActors/'
 
-
-
-
 class AllActorsList extends Component {
     constructor(props) {
-		super(props);
-		this.state = {
-			actors: [],
-			sortedActors: [],
-			actorsWithTitles: []
-		}
-	}
+    super(props);
 
+      this.onChangePage = this.onChangePage.bind(this);
 
-	//this function calls the db and fetches infor with query
-	//then returns results of all actos
-	loadActors (){
-		console.log("Ringing:", APIactors)
-		fetch (APIactors)
-			.then(res => res.json())
-			.then(result => {
-				this.setState({actors:result})
-				//this calls the generateUniqueActors function with the results from loadAll and filters the list by unique actors
-				//after the list is sanitized of duplicates it's then sorted
-				this.setState({sortedActors: this.generateUniqueActors(this.state.actors)})
-				//console.log('✅',this.generateUniqueActors(this.state.actors))
-				// this.locationsByActors(this.state.sortedActors)
-				console.log("😎", this.locationsByActors(this.state.sortedActors))
+      this.state = {
+        actors: [],
+        sortedActors: [],
+        actorsWithTitles: [],
+        pageOfItems: []
+      }
+    }
 
-			})
-			.catch(err => console.log('🛑🛑🛑 Check All Actors Component',err))
-	}
+  //this function calls the db and fetches infor with query
+  //then returns results of all actos
+  loadActors (){
+    console.log("Ringing:", APIactors)
+    fetch (APIactors)
+      .then(res => res.json())
+      .then(result => {
+        this.setState({actors:result})
+        //this calls the generateUniqueActors function with the results from loadAll and filters the list by unique actors
+        //after the list is sanitized of duplicates it's then sorted
+        this.setState({sortedActors: this.generateUniqueActors(this.state.actors)})
+        //console.log('✅',this.generateUniqueActors(this.state.actors))
+        // this.locationsByActors(this.state.sortedActors)
+        console.log("😎", this.locationsByActors(this.state.sortedActors))
 
-	//checks to make sure each actor is displayed once, if the actor is not in the list then they exist in the sortedActors array already
-	generateUniqueActors(filmList) {
-		var uniqueActors = {}
-		filmList.forEach(film => {
-			// TODO: refactor into loop
-			if (uniqueActors[film.actor_1] === undefined) {
-				uniqueActors[film.actor_1] = true
-			}
-			if (uniqueActors[film.actor_2] === undefined) {
-				uniqueActors[film.actor_2] = true
-			}
-			if (uniqueActors[film.actor_3] === undefined) {
-				uniqueActors[film.actor_3] = true
-			}
-		})
+      })
+      .catch(err => console.log('🛑🛑🛑 Check All Actors Component',err))
+  }
 
-		let sortedActors = Object.keys(uniqueActors).sort()
-		// console.log("👃🏼",sortedActors)
-		return sortedActors
+  //checks to make sure each actor is displayed once, if the actor is not in the list then they exist in the sortedActors array already
+  generateUniqueActors(filmList) {
+    var uniqueActors = {}
+    filmList.forEach(film => {
+      // TODO: refactor into loop
+      if (uniqueActors[film.actor_1] === undefined) {
+        uniqueActors[film.actor_1] = true
+      }
+      if (uniqueActors[film.actor_2] === undefined) {
+        uniqueActors[film.actor_2] = true
+      }
+      if (uniqueActors[film.actor_3] === undefined) {
+        uniqueActors[film.actor_3] = true
+      }
+    })
+
+    let sortedActors = Object.keys(uniqueActors).sort()
+    // console.log("👃🏼",sortedActors)
+    return sortedActors
 }
 
-	componentWillMount() {
-		this.loadActors();
-	}
+  componentWillMount() {
+    this.loadActors();
+  }
 
 //this function takes the list results from load actors and sends a query back to the server to grab
 //every row that actor is featured in returning the title and id of that row
 
-	locationsByActors(actorLocList) {
-		actorLocList.forEach((actor, index) => {
-			//if (index > 0) { return }
-			let newURI = APItourbyactor + actor.trim()
-			fetch (newURI)
-			.then(res => res.json())
-			.then(result => {
-				// this.state({actorsWithTitles})
-				// console.log("💋", result)
-			})
-			.catch(err => console.log('Check Actor\'s name🐲',actor, err))
-		})
-	}
+  locationsByActors(actorLocList) {
+    actorLocList.forEach((actor, index) => {
+      //if (index > 0) { return }
+      let newURI = APItourbyactor + actor.trim()
+      fetch (newURI)
+      .then(res => res.json())
+      .then(result => {
+        // this.state({actorsWithTitles})
+        // console.log("💋", result)
+      })
+      .catch(err => console.log('Check Actor\'s name🐲',actor, err))
+    })
+  }
 
+  // idLocationsByActors(idForMarker) {
+  //  idForMarker.forEach((id) => {
+  //    // let actorLink = this.state.actorsWithTitles;
+  //    // console.log("🍄", actorLink)
+  //  })
+  // }
 
-	// idLocationsByActors(idForMarker) {
-	// 	idForMarker.forEach((id) => {
-	// 		// let actorLink = this.state.actorsWithTitles;
-	// 		// console.log("🍄", actorLink)
-	// 	})
-	// }
+  //NEXT STEPS:
+  //1. create marker by id: write new function to use the returned id to mark on the map where that location was
+  //2. have a drop down or checkbox or radio button next to the id so that users can save loc
+  //3. pagination set up for list (nice feature)
+  //4. follow similiar queries but for titles (prop a little easier only dealing with one column)
+  //4. contain map so it's in fixed location. as well as column for Actors and Titles
 
-	//NEXT STEPS:
-	//1. create marker by id: write new function to use the returned id to mark on the map where that location was
-	//2. have a drop down or checkbox or radio button next to the id so that users can save loc
-	//3. pagination set up for list (nice feature)
-	//4. follow similiar queries but for titles (prop a little easier only dealing with one column)
-	//4. contain map so it's in fixed location. as well as column for Actors and Titles
-
-
-
-//r
 // [
-// 	{name: "Eddie Murphy", films: [ {name: "", id: ""} ]}
+//  {name: "Eddie Murphy", films: [ {name: "", id: ""} ]}
 // ]
 
 // [{
 // actor: value
-// 	{id: val,
-// 	{title: val}
+//  {id: val,
+//  {title: val}
 // }]
 
+  // onActorClick = (props) =>
+  //  this.setState({
+  //    selectedActor: props
+  //  })
 
-	// onActorClick = (props) =>
-	// 	this.setState({
-	// 		selectedActor: props
-	// 	})
+  onChangePage(pageOfItems){
+    this.setState({pageOfItems})
+  }
 
-	render(){
+  render(){
 
-		console.log('frommmmm actors component file', this.state.actors.length)
+    console.log('frommmmm actors component file', this.state.actors.length)
 
-		// let actorLink = this.state.idLocationsByActors
+    // let actorLink = this.state.idLocationsByActors
 
-		let lis = this.state.sortedActors.map(actor => {
-			return <li>
-				<a href={`/AllActors/${actor}`}> {actor}</a></li>
-		})
+    // let lis = this.state.sortedActors.map(actor => {
+    //  return <li>
+    //    <a href={`/AllActors/${actor}`}> {actor}</a></li>
+    // })
+    console.log("????????",this.props.match.isExact)
+    let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
+    return (
+      <div className={"App-Component-Actors-Route-Container " + showColumn}>
+        <div className="Component-Actors">
+            <h2>Location By Actor</h2>
 
-		let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
-
-		return (
-
-			<div className={"App-Component-Actors-Route-Container " + showColumn}>
-				<div className="Component-Actors">
-						<h1>Location By Actor</h1>
-
-						<ol>
-							{lis}
-						</ol>
-				</div>
-      </div>
-
-		)
-	}
+            {this.state.pageOfItems.map((item,key) =>
+              <div key={key}> <a href={`/AllActors/${encodeURIComponent(item)}`}>{item} </a></div>
+            )}
+            <JwPagination items={this.state.sortedActors} onChangePage={this.onChangePage} />
+        </div>
+      </div>
+    )
+  }
 }
+
+//    return (
+
+//      <div className={"App-Component-Actors-Route-Container " + showColumn}>
+//        <div className="Component-Actors">
+//            <h1>Location By Actor</h1>
+
+//            <ol>
+//              {lis}
+//            </ol>
+//        </div>
+//       </div>
+
+//    )
+//  }
+// }
 
 export default withRouter(AllActorsList);
