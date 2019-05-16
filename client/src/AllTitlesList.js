@@ -74,7 +74,7 @@ class AllTitlesList extends Component {
 		// })
 console.log(this.state.sortedTitles)
 		return (
-			<div className="App-Component-Titles-Route-Container">
+			<div className="Component-Titles">
 			<h1>Location By Title</h1>
 
 				{this.state.pageOfItems.map((item,key) =>

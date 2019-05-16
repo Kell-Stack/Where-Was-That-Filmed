@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
 import CurrentLoc from './CurrentLoc';
-import {Container, Row, Col }from 'react-bootstrap'
 
 
 export class MapContainer extends Component {
@@ -41,40 +40,35 @@ export class MapContainer extends Component {
 
         return (
 
-            <Container>
-                <Row>
-                    <Col xs={6}></Col>
-                        <CurrentLoc
-                            centerAroundCurrentLocation
-                            google={this.props.google}
-                            map={this.props.map}
 
-                        >
-                        <Marker
-                        onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} icon={iconMarker}
+            <CurrentLoc
+                centerAroundCurrentLocation
+                google={this.props.google}
+                map={this.props.map}
+            >
+            <Marker
+            onClick={this.onMarkerClick} name={'YOU ARE HERE📍'} icon={iconMarker}
+            />
+                {this.props.locations.map((latlngval, idx) => {
+                    return <Marker
+                        key={idx}
+                        position={latlngval}
+                        onClick={this.onMarkerClick}
+                        name={this.props.locations[idx].title}
+
                         />
-                            {this.props.locations.map((latlngval, idx) => {
-                                return <Marker
-                                    key={idx}
-                                    position={latlngval}
-                                    onClick={this.onMarkerClick}
-                                    name={this.props.locations[idx].title}
+                })}
 
-                                    />
-                            })}
-
-                        <InfoWindow
-                            marker={this.state.activeMarker}
-                            visible={this.state.showingInfoWindow}
-                            onClose={this.onClose}
-                        >
-                            <div>
-                                <h4>{this.state.selectedPlace.name}</h4>
-                            </div>
-                        </InfoWindow>
-                        </CurrentLoc>
-                </Row>
-            </Container>
+            <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+            >
+                <div>
+                    <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+            </InfoWindow>
+            </CurrentLoc>
         )
     }
 }

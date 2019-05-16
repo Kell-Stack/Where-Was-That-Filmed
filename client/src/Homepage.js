@@ -67,20 +67,20 @@ class Homepage extends Component {
     // </div>
 
     return (
-        <div className="Header">
+        <div className="main-container" >
           <Router>
             <Menu />
 
-              <div className="App-Component-Map-Container">
-                <MapContainer locations={this.state.locations}/>
-              </div>
-
-              <div className="App-Component-Titles-Route-Container">
+              <div className="App-Component-Titles-Route-Container col-6">
                 <Route path='/AllTitles' component={AllTitlesList}/>
               </div>
 
               <div className="App-Component-Actors-Route-Container">
                 <Route path='/AllActors' component={AllActorsList}/>
+              </div>
+
+              <div className="App-Component-Map-Container col-6">
+                <MapContainer locations={this.state.locations}/>
               </div>
 
               <div className="App-Component-Actors-Route-Container">

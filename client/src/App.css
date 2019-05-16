@@ -6,13 +6,9 @@ html,body {
   background-color: #3a3a3a;
 } */
 
- /* .App-Component-Map-Container {
-  height: 50%;
-  overflow:hidden;
-  padding-bottom:56.25%;
-  position:relative;
-  height:0;
-} */
+#root .map-container {
+  margin: 0px;
+}
 
 .App {
   background: #F16150;
@@ -29,22 +25,28 @@ html,body {
   font-family: 'Sifonn Pro';
 }
 
+.navbaby {
+  background-color: #ef686d;
+
+}
+
+.navbar {
+  width: 100%;
+}
+
 div#firebaseui_container {
   float: right;
   margin-top: -74px;
   margin-right: 5px;
 }
 
-/* .firebaseui-idp-button {
-  float: right;
-  margin-top: -67px;
-  margin-right: 5px;
-} */
-
-.MapContainerjs-Div {
-  border: #ef686d;
-  font-family: 'Sifonn Pro';
+.main-container {
+  background-color: #595758;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
+
 
 .profpic {
   border-radius: 50%;
@@ -58,6 +60,9 @@ div#firebaseui_container {
   font-size: 10pt
 }
 
+/* .col-6{
+  width:50%;
+} */
 
 .dropdown{
   font-family: 'Sifonn Pro';
@@ -67,7 +72,11 @@ div#firebaseui_container {
   position: right;
 }
 
-.App-Component-Titles-Route-Container {
+/* .App-Component-Map-Container {
+  height:100%;
+} */
+
+.App-Component-Titles-Route-Container  {
   background: #595758;
   font-family: 'Sifonn Pro';
 }

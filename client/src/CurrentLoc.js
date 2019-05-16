@@ -6,7 +6,7 @@ const mapStyles = {
     map: {
       position: 'absolute',
       zoom: 1,
-      width: '50%',
+      width: '100%',
       height: '100%',
 
 
@@ -111,29 +111,19 @@ class CurrentLoc extends Component {
     render() {
         const style = Object.assign({}, mapStyles.map);
         return (
-            <div className='Map.js Div Container'>
+            <div className='Map-Div-Container'>
                 <div style={style} ref="map">
                     Loading map...
                 </div>
             {this.renderChildren()}
             </div>
+
         );
     }
 }
 
-
-//     render() {
-//         const style = Object.assign({}, mapStyles.map);
-//         return (
-//             <Map google={this.props.google} zoom={14}>
-//             {this.renderChildren()}
-//             </Map>
-//         );
-//     }
-// }
-
-
 // SF centered lat/lng from google
+
 CurrentLoc.defaultProps = {
     zoom: 14,
     initialCenter: {

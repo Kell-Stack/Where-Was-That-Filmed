@@ -125,7 +125,7 @@ class AllActorsList extends Component {
 		// let idMarker;
 
 		return (
-			<div className="App-Component-Actors-Route-Container">
+			<div className="Component-Actors">
 					<h1>Location By Actor</h1>
 
 					<ol>

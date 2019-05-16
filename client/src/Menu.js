@@ -24,8 +24,6 @@ class Menu extends React.Component {
   }
   render() {
     return (
-
-        <div>
           <Navbar className="navbaby" color="faded" light>
             <NavbarBrand href="/" className="dropdown">Where Was That Filmed?</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -48,9 +46,6 @@ class Menu extends React.Component {
               </Nav>
               </Collapse>
           </Navbar>
-        </div>
-
-
 
     );
   }
