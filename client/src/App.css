@@ -72,9 +72,9 @@ div#firebaseui_container {
   position: right;
 }
 
-/* .App-Component-Map-Container {
-  height:100%;
-} */
+.App-Component-Map-Container {
+  max-height: 500px;
+}
 
 .App-Component-Titles-Route-Container  {
   background: #595758;

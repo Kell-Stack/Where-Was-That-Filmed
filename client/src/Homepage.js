@@ -66,25 +66,22 @@ class Homepage extends Component {
     //             <Route path='/' component={Homepage}></Route>
     // </div>
 
+    console.log("!!hiiii", this.props);
     return (
         <div className="main-container" >
           <Router>
             <Menu />
 
-              <div className="App-Component-Titles-Route-Container col-6">
-                <Route path='/AllTitles' component={AllTitlesList}/>
-              </div>
+              <Route path='/AllTitles' component={AllTitlesList} />
+
+              <Route path='/AllActors' component={AllActorsList}/>
 
               <div className="App-Component-Actors-Route-Container">
-                <Route path='/AllActors' component={AllActorsList}/>
+                <Route path='/search' component={AllActorsList} />
               </div>
 
               <div className="App-Component-Map-Container col-6">
                 <MapContainer locations={this.state.locations}/>
-              </div>
-
-              <div className="App-Component-Actors-Route-Container">
-                <Route path='/search' component={AllTitlesList || AllActorsList}/>
               </div>
 
           </Router>

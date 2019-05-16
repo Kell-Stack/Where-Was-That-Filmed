@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 import JwPagination from 'jw-react-pagination';
 const APItitle = '/API/AllTitles/'
 const APItourbytitle = '/API/AllTitles/'
@@ -72,20 +73,24 @@ class AllTitlesList extends Component {
 		// 	<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
 		// 	</li>
 		// })
-console.log(this.state.sortedTitles)
+//console.log(this.state.sortedTitles)
+console.log("????????",this.props.match.isExact)
+let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
 		return (
+		<div className={"App-Component-Titles-Route-Container " + showColumn}>
 			<div className="Component-Titles">
-			<h1>Location By Title</h1>
+				<h1>Location By Title</h1>
 
 				{this.state.pageOfItems.map((item,key) =>
 					<div key={key}> <a href={`/AllTitles/${encodeURIComponent(item)}`}>{item} </a></div>
 				)}
 				<JwPagination items={this.state.sortedTitles} onChangePage={this.onChangePage} />
 			</div>
+		  </div>
 		)
 	}
 }
 
 
 
-export default AllTitlesList;
+export default withRouter(AllTitlesList);

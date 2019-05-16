@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 const APIactors = '/API/AllActors'
 const APItourbyactor = '/AllActors/'
 
@@ -122,19 +123,22 @@ class AllActorsList extends Component {
 				<a href={`/AllActors/${actor}`}> {actor}</a></li>
 		})
 
-		// let idMarker;
+		let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
 
 		return (
-			<div className="Component-Actors">
-					<h1>Location By Actor</h1>
 
-					<ol>
-						{lis}
-					</ol>
-			</div>
+			<div className={"App-Component-Actors-Route-Container " + showColumn}>
+				<div className="Component-Actors">
+						<h1>Location By Actor</h1>
+
+						<ol>
+							{lis}
+						</ol>
+				</div>
+      </div>
+
 		)
 	}
 }
 
-
-export default AllActorsList;
+export default withRouter(AllActorsList);
