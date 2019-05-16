@@ -7,7 +7,9 @@ const mapStyles = {
       position: 'absolute',
       zoom: 1,
       width: '50%',
-      height: '100%'
+      height: '100%',
+
+
     }
   };
 
@@ -19,7 +21,8 @@ class CurrentLoc extends Component {
         this.state = {
             currentLocation: {
             lat: lat,
-            lng: lng
+            lng: lng,
+            zoom: 1
             }
         };
     }

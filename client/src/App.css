@@ -1,6 +1,10 @@
-.bg-dark  {
+html,body {
+  height:100%;
+ }
+
+/* .bg-dark  {
   background-color: #3a3a3a;
-}
+} */
 
  /* .App-Component-Map-Container {
   height: 50%;
@@ -11,8 +15,9 @@
 } */
 
 .App {
-  background: #f9c04b;
+  background: #F16150;
   font-family: 'Sifonn Pro';
+  display: block;
   }
 
 .Header{
@@ -23,6 +28,18 @@
 .header h3 {
   font-family: 'Sifonn Pro';
 }
+
+div#firebaseui_container {
+  float: right;
+  margin-top: -74px;
+  margin-right: 5px;
+}
+
+/* .firebaseui-idp-button {
+  float: right;
+  margin-top: -67px;
+  margin-right: 5px;
+} */
 
 .MapContainerjs-Div {
   border: #ef686d;

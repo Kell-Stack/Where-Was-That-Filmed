@@ -37,9 +37,9 @@ class App extends Component {
           <div className="App">
             <Video />
             {this.state.isSignedIn ? (
-              <span>
+
                 <Homepage/>
-              </span>
+
             ) : (
               <StyledFirebaseAuth
                 uiConfig={this.uiConfig}

@@ -43,7 +43,7 @@ class Menu extends React.Component {
                     <NavLink to='/AllActors'>Actors</NavLink>
                 </NavItem>
                 <NavItem>
-                  <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+                  <button onClick={() => firebase.auth().signOut()}>Logout!</button>
                 </NavItem>
               </Nav>
               </Collapse>

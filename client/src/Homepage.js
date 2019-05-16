@@ -84,7 +84,7 @@ class Homepage extends Component {
               </div>
 
               <div className="App-Component-Actors-Route-Container">
-                <Route path='/search' component={AllTitlesList}/>
+                <Route path='/search' component={AllTitlesList || AllActorsList}/>
               </div>
 
           </Router>
