@@ -70,12 +70,12 @@ class SearchBox extends React.Component {
           <Input type="" name="" id="SearchBox" placeholder=""  onChange={event => {this.setState({query:event.target.value})
           console.log("jsfjdfgevfas flbwlubcwbasjdhbjc",event.target.value)}}
 
-                                                                onKeyPress={event => {
-                                                                  console.log("helololol,",event.key)
-                                                                  if (event.key === "Enter") {
-                                                                    event.preventDefault();
-                                                                    this.search ()
-                                                                  }}}/>
+                                                                      onKeyPress={event => {
+                                                                        console.log("helololol,",event.key)
+                                                                        if (event.key === "Enter") {
+                                                                          event.preventDefault();
+                                                                          this.search ()
+                                                                        }}}/>
         </FormGroup>
         {' '}
         <Button onClick={this.search}>Search</Button>

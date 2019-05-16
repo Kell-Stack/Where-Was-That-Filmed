@@ -5,7 +5,7 @@ import MapContainer from './MapContainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
-// import Homepage from './Homepage';
+import Search from './Search';
 // import {Container, Row, Col }from 'react-bootstrap'
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
@@ -77,7 +77,7 @@ class Homepage extends Component {
               <Route path='/AllActors' component={AllActorsList}/>
 
               <div className="App-Component-Actors-Route-Container">
-                <Route path='/search' component={AllActorsList} />
+                <Route path='/search' component={Search} />
               </div>
 
               <div className="App-Component-Map-Container col-6">

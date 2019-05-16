@@ -38,17 +38,15 @@ to create table.
 
 
 Then in another shell, run script to convert location strings from SF.gov to lat and lng from Geocode
+
 ```
 $ cd server
 ```
+
 ```
 $ node GeocodeScript.js
 ```
-$ cd server
-```
-```
-$ node GeoCodeScript.js
-```
+
 
 
 
