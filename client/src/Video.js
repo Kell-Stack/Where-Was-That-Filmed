@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import VideoCover from 'react-video-cover';
 import video from './motionsf.mp4';
 
-
 class Video extends Component {
   render() {
     return (
