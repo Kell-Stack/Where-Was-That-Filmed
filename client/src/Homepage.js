@@ -71,16 +71,11 @@ class Homepage extends Component {
         <div className="main-container" >
           <Router>
             <Menu />
-            <div className="col-6">
-                <Route path='/AllTitles' component={AllTitlesList} />
-
-
-                <Route path='/AllActors' component={AllActorsList}/>
-
-                <div className="App-Component-Search-Route-Container">
+              <div className="col-6">
+                  <Route path='/AllTitles' component={AllTitlesList} />
+                  <Route path='/AllActors' component={AllActorsList}/>
                   <Route path='/search'/>
-                </div>
-            </div>
+              </div>
 
               <div className="App-Component-Map-Container col-6">
                 <MapContainer locations={this.state.locations}/>

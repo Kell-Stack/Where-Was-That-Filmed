@@ -11,7 +11,7 @@ html,body {
 }
 
 .App {
-  background: #F16150;
+  background: #595758;
   font-family: 'Sifonn Pro';
   display: block;
   }
@@ -47,6 +47,10 @@ div#firebaseui_container {
   flex-wrap: wrap;
 }
 
+.h1 {
+  margin-top: -3rem;
+}
+
 
 .profpic {
   border-radius: 50%;
@@ -59,10 +63,6 @@ div#firebaseui_container {
   font-family: 'Sifonn Pro';
   font-size: 10pt
 }
-
-/* .col-6{
-  width:50%;
-} */
 
 .dropdown{
   font-family: 'Sifonn Pro';
@@ -82,7 +82,7 @@ div#firebaseui_container {
 }
 
 .App-Component-Actors-Route-Container {
-  background: lightcoral;
+  background: #595758;
   font-family: 'Sifonn Pro';
 }
 
