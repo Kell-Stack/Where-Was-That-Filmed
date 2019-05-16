@@ -86,25 +86,6 @@ console.log(this.state.sortedTitles)
 	}
 }
 
-// 		let lis = this.state.sortedTitles.map(title => {
-// 			let encodedTitle = encodeURIComponent(title)
-// 			// console.log('🌹',title, encodedTitle)
-// 			return <li key={encodedTitle} >
-// 			<a href={`/AllTitles/${encodedTitle}`}> {title}</a>
-// 			</li>
-// 		})
-
-// 		return (
-// 			<div className="App-Component-Titles-Route-Container">
-// 			<h1>Location By Title</h1>
-
-// 				<ol>
-// 					{lis}
-// 				</ol>
-// 			</div>
-// 		)
-// 	}
-// }
 
 
 export default AllTitlesList;
