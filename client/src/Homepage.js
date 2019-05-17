@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
 import Welcome from './Welcome'
-import Search from './Search';
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
 const APItourbytitle = '/API/AllTitles/'

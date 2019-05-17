@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 const APIroot = '/';
 
 class Welcome extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     loadWelcome(){
         fetch (APIroot)
         .then(res => res.json())
@@ -19,9 +15,9 @@ class Welcome extends Component {
     render () {
         return(
             <div>
-                <h3>Welcome to</h3>
-                <h1 id="welcome-wwtf">Where Was That Filmed?</h1>
-                <h3>Locate where scenes from your favorite films and television series were shot in beautiful San Francisco. Browse all the locations and tweet us or tag us in your ig photos at @WhereWasThatFilmed with the hashtag #WWTF to share your recreation of iconic cinematic moments!</h3>
+                <h1 id="welcome-wwtf">San Francisco has over 1000 film locations</h1>
+                <h4>Locate where scenes from your favorite films and television series were shot in the foggy city by the bay. Browse the locations by title or actor and tweet us or tag us in your ig photos at @WhereWasThatFilmed with the hashtag #WWTF to share your recreation of iconic cinematic moments!</h4>
+
             </div>
         )
     }

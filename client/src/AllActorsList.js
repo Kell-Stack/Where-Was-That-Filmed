@@ -1,9 +1,4 @@
-import React, {
-	Component
-} from 'react';
-import {
-	withRouter
-} from 'react-router-dom';
+import React, {Component} from 'react';
 import JwPagination from 'jw-react-pagination';
 const APIactors = '/API/AllActors'
 const APItourbyactor = '/AllActors/'

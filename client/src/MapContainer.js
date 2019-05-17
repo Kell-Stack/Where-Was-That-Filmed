@@ -38,6 +38,7 @@ export class MapContainer extends Component {
             new window.google.maps.Size(32,32)
             )
 
+
         return (
 
 

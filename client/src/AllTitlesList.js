@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import JwPagination from 'jw-react-pagination';
 const APItitle = '/API/AllTitles/'
