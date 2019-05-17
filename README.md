@@ -52,7 +52,7 @@ $ node GeocodeScript.js
 
 ## Implementation
 
-I used data from  ```https://data.sfgov.org/Culture-and-Recreation/Film-Locations-in-San-Francisco/yitu-d5am``` which provided me with a listing of filming locations of movies shot in San Francisco starting from 1924. The data was provided by and last updated on October 27, 2017 by the San Francisco Film Commission.
+I used data from  ```https://data.sfgov.org/Culture-and-Recreation/Film-Locations-in-San-Francisco/yitu-d5am``` which provided me with a listing of filming locations of movies and tv series shot in San Francisco starting from 1924. The data was provided by and last updated on October 27, 2017 by the San Francisco Film Commission.
 *Note: This data was sanitized of tv shows' season and episode information as well as locations that were returned from Geocode as null or out of SF bounds
 
 - React
@@ -64,13 +64,20 @@ I used data from  ```https://data.sfgov.org/Culture-and-Recreation/Film-Location
 
 ## Usage
 
-Where Was That Filmed? allows film and TV buffs the chance to locate where their favorite scenes were shot in beautiful San Francisco. Browse all the locations and tweet us @WhereWasThatFilmed with the hashtag #WWTF to share your recreation of iconic cinematic moments.
+Where Was That Filmed? allows film and TV buffs the chance to locate where their favorite scenes were shot in beautiful San Francisco. Browse all the locations and tweet us or tag us in your ig photos at @WhereWasThatFilmed with the hashtag #WWTF to share your recreation of iconic cinematic moments!
 
 ## Future Features
 
-To add to this project in the future, I'd like to
-* Use TMDB to gather and display more information about each title
+I'd like to add the following to this project in the future:
+* Use TMDB to gather and display more information about each title and actor
 * Add Google directions capabilities
+* Partner with SF Film Commision to improve data
+* Add "email tour" capabilities
+* Use the "fun_fact" column provided by SF.gov to send text messages with Twilio's API
+
+Even further on:
+* Add a section for instagram photos that were tagged with #WWTF
+* Open the scope outside of SF to include other major cities
 
 ## Resources
 

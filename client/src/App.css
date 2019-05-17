@@ -51,6 +51,9 @@ div#firebaseui_container {
   margin-top: -3rem;
 }
 
+.pagination {
+  size:10pt
+}
 
 .profpic {
   border-radius: 50%;
@@ -98,6 +101,7 @@ div#firebaseui_container {
   overflow: hidden;
   font-family: 'Sifonn Pro';
 }
+
 .hero-video {
   position: absolute;
   width: 100%;

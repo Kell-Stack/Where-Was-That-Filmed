@@ -125,7 +125,7 @@ async function generateLatLong() {
     async function getAllLatLongs() {
         // locationQuery.rowCount
 
-        for (let i = 0; i < 958 ; i++) {
+        for (let i = 0; i < locationQuery,length ; i++) {
             var locationFromRow = locationQuery.rows[i].locations
             console.log("Location string: ",locationFromRow)
             let latLongValues = await getLatLongFromGoogleGeocodeAPI(i, locationFromRow)

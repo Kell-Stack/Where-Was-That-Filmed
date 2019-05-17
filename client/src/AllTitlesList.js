@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import JwPagination from 'jw-react-pagination';
 const APItitle = '/API/AllTitles/'
-const APItourbytitle = '/API/AllTitles/'
+const APItourbytitle = '/API/AllTitles/';
+
+
 
 
 class AllTitlesList extends Component {
@@ -77,7 +80,9 @@ class AllTitlesList extends Component {
 console.log("????????",this.props.match.isExact)
 // let showColumn = (this.props.match.isExact === true) ? "col-6" : ""
 		return (
-		<div className="App-Component-Titles-Route-Container">
+			<Router>
+			<Route path='/AllTitles'/>
+			<div className="App-Component-Titles-Route-Container">
 			<div className="Component-Titles">
 				<h1>Location By Title</h1>
 
@@ -87,7 +92,9 @@ console.log("????????",this.props.match.isExact)
 				<JwPagination items={this.state.sortedTitles} onChangePage={this.onChangePage} />
 			</div>
 		  </div>
+		</Router>
 		)
+
 	}
 }
 

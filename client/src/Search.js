@@ -53,6 +53,7 @@ class SearchBox extends React.Component {
   //   setActors()
 // }
   search(e) {
+    e.preventDefault();
 
     var userInput = this.state.query
     console.log("🆒", userInput)

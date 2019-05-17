@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
 import Search from './Search';
-// import {Container, Row, Col }from 'react-bootstrap'
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
 const APItourbytitle = '/API/AllTitles/'
@@ -30,6 +29,7 @@ class Homepage extends Component {
     // 3. all locations for a single actor
     // We determine this based on the URL
     let apiCall = APIlatlng;
+
     const path = window.location.pathname;
     if (path.startsWith("/AllActors")) {
       const actor = path.split('/')[2];
@@ -56,7 +56,11 @@ class Homepage extends Component {
       .catch(err => console.log('❌❌❌ something is wrong with getting your lat and lngs', err))
   }
 
-  componentWillMount() {
+  // componentDidUpdate() {
+
+  // }
+
+  componentDidMount() {
     this.loadLatLng()
   }
 
@@ -71,7 +75,9 @@ class Homepage extends Component {
         <div className="main-container" >
           <Router>
             <Menu />
+
               <div className="col-6">
+
                   <Route path='/AllTitles' component={AllTitlesList} />
                   <Route path='/AllActors' component={AllActorsList}/>
                   <Route path='/search'/>
