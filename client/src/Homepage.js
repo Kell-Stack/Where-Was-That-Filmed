@@ -5,6 +5,7 @@ import MapContainer from './MapContainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AllTitlesList from './AllTitlesList';
 import AllActorsList from './AllActorsList';
+import Welcome from './Welcome'
 import Search from './Search';
 const APIlatlng = '/API/LatLng'
 const APItourbyactor = '/API/AllActors/'
@@ -77,7 +78,7 @@ class Homepage extends Component {
             <Menu />
 
               <div className="col-6">
-
+                  <Route path='/' component={Welcome} />
                   <Route path='/AllTitles' component={AllTitlesList} />
                   <Route path='/AllActors' component={AllActorsList}/>
                   <Route path='/search'/>

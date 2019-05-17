@@ -51,6 +51,11 @@ div#firebaseui_container {
   margin-top: -3rem;
 }
 
+h1#welcome-wwtf{
+  font-family: 'Sifonn Pro';
+  color: white;
+}
+
 .pagination {
   size:10pt
 }
@@ -62,10 +67,6 @@ div#firebaseui_container {
   font-family: 'Sifonn Pro';
 }
 
-.welcometext{
-  font-family: 'Sifonn Pro';
-  font-size: 10pt
-}
 
 .dropdown{
   font-family: 'Sifonn Pro';

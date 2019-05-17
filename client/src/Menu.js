@@ -24,14 +24,14 @@ class Menu extends React.Component {
   }
   render() {
     return (
-          <Navbar className="navbaby" color="faded" light>
+          <Navbar className="navbaby" color="faded" light static-top>
             <NavbarBrand href="/" className="dropdown">Where Was That Filmed?</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse isOpen={!this.state.collapsed} navbar>
             <img className="profpic"
                   alt="avatar"
                   src={firebase.auth().currentUser.photoURL}/>
-                <h6 className="welcometext">Welcome {firebase.auth().currentUser.displayName}</h6>
+                <h6 className="welcometext">Hey there, {firebase.auth().currentUser.displayName}</h6>
             <SearchBox />
               <Nav navbar>
                 <NavItem>

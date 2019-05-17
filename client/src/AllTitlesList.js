@@ -5,9 +5,6 @@ import JwPagination from 'jw-react-pagination';
 const APItitle = '/API/AllTitles/'
 const APItourbytitle = '/API/AllTitles/';
 
-
-
-
 class AllTitlesList extends Component {
 	constructor(props) {
 		super(props);
