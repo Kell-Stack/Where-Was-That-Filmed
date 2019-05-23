@@ -37,6 +37,8 @@ class AllActorsList extends Component {
 				console.log("😎", this.locationsByActors(this.state.sortedActors))
 
 			})
+
+
 			.catch(err => console.log('🛑🛑🛑 Check All Actors Component', err))
 	}
 

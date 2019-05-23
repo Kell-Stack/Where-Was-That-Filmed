@@ -1,5 +1,7 @@
 # Where Was That Filmed?
 
+![](./client/src/WWTF.GIF)
+
 ## Table of Contents
 
 - [Installation](#installation)
